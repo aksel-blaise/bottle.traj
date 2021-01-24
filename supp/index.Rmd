@@ -24,15 +24,15 @@ knitr::include_graphics('./images/hist.caddo.net.jpg')
 
 * Caddo bottles from the northern and southern communities of practice differ in shape
 * The shape of Caddo bottles from the northern and southern communities of practice change through time
-* Patterns of shape change are significant based upon phenotypic trajectory analysis
+* Patterns of northern and southern Caddo bottle shape change differ significantly
 
 ## Acknowledgments
 
-I express our gratitude to the Caddo Nation of Oklahoma and the Anthropology and Archaeology Laboratory at Stephen F. Austin State University for the requisite permissions and access to the NAGPRA items from the Washington Square Mound site and Turner collection. Thanks to ..., as well as the editors and reviewers for their comments and constructive criticisms that further improved the manuscript.
+I extend my gratitude to the Caddo Nation of Oklahoma,the Material Sciences Laboratory at Southern Methodist University, the Williamson Museum at Northwestern State University, the Louisiana State Exhibit Museum, the Texas Archeological Research Laboratory at The University of Texas at Austin, and the Louisiana State University Museum of Natural Science for the requisite permissions, access, and space needed to generate 3D scans of Caddo bottles. Thanks also to Dean C. Adams, Emma Sherratt, Michael J. Shott, Hiram F. (Pete) Gregory, B. Sunday Eiselt, Julian A. Sitters, and Kersten Bergstrom for their constructive criticisms, comments, and suggestions throughout the development of this research design; to the editors for their invitation to submit this chapter; and the anonymous reviewers whose comments improved the manuscript. Development of the analytical workflow and production of 3D scans from the Clarence H. Webb collection was funded by a grant to the author (P14AP00138) from the National Center for Preservation Technology and Training. Production of 3D scan data for Hickory Engraved and Smithport Plain bottles from the Texas Archeological Research Laboratory was funded by a grant from the Texas Archeological Society, and the production of 3D scan data for previously repatriated Caddo bottles was funded by a grant from the Caddo Nation of Oklahoma.
 
 ## Funding
 
-Components of the analytical workflow were developed and funded by a Preservation Technology and Training grant (P14AP00138) to the author from the National Center for Preservation Technology and Training, as well as grants to the author from the Caddo Nation of Oklahoma, National Forests and Grasslands in Texas (15-PA-11081300-033) and the United States Forest Service (20-PA-11081300-074).
+Components of the analytical workflow were developed and funded by a Preservation Technology and Training grant (P14AP00138) to the author from the National Center for Preservation Technology and Training, as well as a grant to the author from the Caddo Nation of Oklahoma.
 
 ## Data management
 
