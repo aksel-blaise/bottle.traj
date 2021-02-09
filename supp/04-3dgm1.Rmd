@@ -22,7 +22,8 @@ setwd("../")
 qdata <- read.csv("qdata.csv", 
                   header = TRUE, 
                   row.names = 1)
-qdata <- qdata[match(dimnames(coords)[[3]],rownames(qdata)),]
+qdata <- qdata[match(dimnames(coords)[[3]],
+                     rownames(qdata)),]
 ```
 
 ## Generalized Procrustes Analysis
@@ -76,45 +77,19 @@ summary(pca)
 
 ## Define models
 
-### Allometry 
-
-```{r allom.traj, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# general allometry
-fit.size <- procD.lm(shape ~ size, 
-                     data = gdf, 
-                     print.progress = FALSE, 
-                     iter = 9999)
-```
+A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. To assess whether shape changes with size (allometry), and differs by group (region), Procrustes ANOVAs [@RN1749] were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. 
 
 ### Size and shape
 
 ```{r def.mod.1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# allometry - common allometry, different means -> comb
-fit.sz.ccomb <- procD.lm(shape ~ size + comb, 
-                        data = gdf, 
-                        print.progress = FALSE, 
-                        iter = 9999)
+# shape
+fit.size <- procD.lm(size ~ geo * time,
+                data = gdf,
+                print.progress = FALSE,
+                iter = 9999)
 
-# allometry - unique allometries -> comb
-fit.sz.ucomb <- procD.lm(shape ~ size * comb, 
-                        data = gdf, 
-                        print.progress = FALSE, 
-                        iter = 9999)
-
-# size as a function of comb
-fit.size.comb <- procD.lm(size ~ comb, 
-                           data = gdf, 
-                           print.progress = FALSE, 
-                           iter = 9999)
-
-# shape as a function of comb
-fit.shape.comb <- procD.lm(shape ~ comb, 
-                            data = gdf, 
-                            print.progress = FALSE, 
-                            iter = 9999)
-
-# trajectory
-fit <- procD.lm(shape ~ geo * time,
+# shape
+fit.shape <- procD.lm(shape ~ geo * time,
                 data = gdf,
                 print.progress = FALSE,
                 iter = 9999)
@@ -122,9 +97,7 @@ fit <- procD.lm(shape ~ geo * time,
 
 ## Test Hypothesis
 
-The hypothesis assesses whether Formative/Early and Late/Historic Caddo bottles found north and south of the shape boundary follow different patterns of shape change.
-
-A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. To assess whether shape changes with size (allometry), and differs by group (region), Procrustes ANOVAs [@RN1749] were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. 
+_Hypothesis: Formative/Early and Late/Historic Caddo bottles found north and south of the shape boundary express discrete patterns of shape change._
 
 ### Boxplot
 
@@ -154,87 +127,23 @@ col.gps.comb <- wes_palette("Moonrise2")[as.factor(comb)]
 col.hull <- c("#C27D38","#798E87","#CCC591","#29211F")
 
 # plot pca by comb
-pc.plot1 <- plot(pca, 
+pc.plot <- plot(pca, 
                  asp = 1,
                  pch = pch.gps.comb,
                  col = col.gps.comb)
-                    shapeHulls(pc.plot1, 
+                    shapeHulls(pc.plot, 
                              groups = comb,
                              group.cols = col.hull)
 ```
 
-### ANOVA
+### Procrustes ANOVA
 
 ```{r h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# comb
-anova(fit.sz.ccomb) # common allometry (comb)
-
-# comb
-anova(fit.sz.ucomb) # unique allometry (comb)
-
 # ANOVA: do Caddo bottle shapes differ by comb?
-anova(fit.shape.comb)
-```
-
-### Allometry
-
-```{r c.allom.h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# regscore (Drake and Klingenberg 2008)
-
-# general allometry - does dalton shape change with size?
 anova(fit.size)
 
-# comb
-plotAllometry(fit.sz.ccomb,
-              size = gdf$size,
-              logsz = TRUE,
-              method = "RegScore", 
-              pch = pch.gps.comb, 
-              col = col.gps.comb)
-
-# common allometric component (Mitteroecker 2004)
-
-# comb
-plotAllometry(fit.sz.ccomb, 
-              size = gdf$size, 
-              logsz = TRUE, 
-              method = "CAC", 
-              pch = pch.gps.comb, 
-              col = col.gps.comb)
-
-# size-shape pca (Mitteroecker 2004)
-
-# comb
-plotAllometry(fit.sz.ccomb, 
-              size = gdf$size, 
-              logsz = TRUE, 
-              method = "size.shape", 
-              pch = pch.gps.comb, 
-              col = col.gps.comb)
-```
-
-```{r u.allom.h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-## predline (Adams and Nistri 2010)
-
-# comb
-plotAllometry(fit.sz.ucomb, 
-              size = gdf$size, 
-              logsz = TRUE, 
-              method = "PredLine", 
-              pch = pch.gps.comb, 
-              col = col.gps.comb)
-```
-
-### Morphological disparity
-
-```{r m-disparity.h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# morphological disparity: does one group display greater 
-# shape variation among individuals relative to the other group?
-morphol.disparity(shape ~ comb, 
-                  groups = qdata$comb, 
-                  data = gdf, 
-                  print.progress = FALSE, 
-                  iter = 9999)
+# ANOVA: do Caddo bottle shapes differ by comb?
+anova(fit.shape)
 ```
 
 ### Mean Shapes
@@ -256,62 +165,43 @@ plot(mean$`south, late historic`)
 
 # comparison plots
 plotRefToTarget(mean$`north, formative early`, 
+                mean$`north, late historic`, 
+                method = "vector",
+                mag = 2)
+
+plotRefToTarget(mean$`north, formative early`, 
                 mean$`south, formative early`, 
                 method = "vector",
-                mag = 1)
+                mag = 2)
+
+plotRefToTarget(mean$`north, formative early`, 
+                mean$`south, late historic`, 
+                method = "vector",
+                mag = 2)
+
+plotRefToTarget(mean$`north, late historic`, 
+                mean$`south, formative early`, 
+                method = "vector",
+                mag = 2)
+
+plotRefToTarget(mean$`north, late historic`, 
+                mean$`south, late historic`, 
+                method = "vector",
+                mag = 2)
+
+plotRefToTarget(mean$`south, formative early`, 
+                mean$`south, late historic`, 
+                method = "vector",
+                mag = 2)
 
 ##knitr::include_graphics('images/mshape.jpg')
-```
-
-## Morphological integration
-
-```{r morph.integ, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# morphological integration::
-land.gps<-c("A","A","A","A","A","B","B","B","B","B","B","B","B","B","C","C","C","C","C","C","C","C","C",
-            "D","D","D","D","D","D","D","D","D","C","C","C","C","C","C","C","C",
-            "C","B","B","B","B","B","B","B","B","B","A","A","A","A","A")
-IT<-integration.test(Y.gpa$coords, partition.gp = land.gps, iter = 999, print.progress = FALSE)
-
-# two.b.pls plots for integration tests::
-
-## partition into groups A,B,C,D
-A<-Y.gpa$coords[which(land.gps=='A'),,] # rim
-B<-Y.gpa$coords[which(land.gps=='B'),,] # neck
-C<-Y.gpa$coords[which(land.gps=='C'),,] # body
-D<-Y.gpa$coords[which(land.gps=='D'),,] # base
-
-AB.int<-integration.test(A=A,A2=B, print.progress = FALSE) # rim/neck integration
-summary(AB.int)
-plot(AB.int)
-
-AC.int<-integration.test(A=A,A2=C, print.progress = FALSE) # rim/body integration
-summary(AC.int)
-plot(AC.int)
-
-AD.int<-integration.test(A=A,A2=D, print.progress = FALSE) # rim/base integration
-summary(AD.int)
-plot(AD.int)
-
-BC.int<-integration.test(A=B,A2=C, print.progress = FALSE) # neck/body integration
-summary(BC.int)
-plot(BC.int)
-
-BD.int<-integration.test(A=B,A2=D, print.progress = FALSE) # neck/base integration
-summary(BD.int)
-plot(BD.int)
-
-CD.int<-integration.test(A=C,A2=D, print.progress = FALSE) # body/base integration
-summary(CD.int)
-plot(CD.int)
-
-compare.pls(AB.int,AC.int,AD.int,BC.int,BD.int,CD.int) #test integration of traits listed above
 ```
 
 ## Trajectory analysis
 
 ```{r trajectory, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# phenotypic trajectory analysis::
-TA <- trajectory.analysis(fit, 
+# trajectory analysis::shape
+TA <- trajectory.analysis(fit.shape, 
                           groups = qdata$geo, 
                           traj.pts = qdata$time, 
                           print.progress = FALSE)
@@ -323,9 +213,10 @@ summary(TA, attribute = "MD")
 TP <- plot(TA, 
            pch = as.numeric(qdata$geo), 
            bg = as.numeric(qdata$time),
-           cex = 0.7, 
+           cex = 0.9,
            col = "gray")
-add.trajectories(TP, traj.pch = c(21, 22), 
+add.trajectories(TP, traj.pch = c(15, 19), 
                  start.bg = 1, 
                  end.bg = 2)
+# end of code
 ```
