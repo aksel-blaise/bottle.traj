@@ -28,7 +28,7 @@ qdata <- qdata[match(dimnames(coords)[[3]],
 
 ## Generalised Procrustes Analysis
 
-Landmark data were aligned to a global coordinate system [@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN478] performed in R 4.0.3 [@R] using the `geomorph` library v. 3.3.2 [@RN11530;@RN1774]. Procrustes superimposition translates, scales, and rotates the coordinate data to allow for comparisons among objects [@RN11564;@RN478]. The `gebmorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN1646;@RN11563]. 
+Landmark data were aligned to a global coordinate system [@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN478] performed in R 4.0.3 [@R] using the `geomorph` library v. 3.3.2 [@RN11530;@RN1774]. Procrustes superimposition translates, scales, and rotates the coordinate data to allow for comparisons among objects [@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN1646;@RN11563]. 
 
 ```{r gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # gpa
@@ -47,9 +47,7 @@ gdf <- geomorph.data.frame(shape = Y.gpa$coords,
                            geo = qdata$geo,
                            time = qdata$time,
                            comb = qdata$comb)
-```
 
-```{r 3d.gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # render 3d gpa plot
 #plot(Y.gpa)
 
@@ -59,7 +57,7 @@ knitr::include_graphics('images/gpa3d.png')
 # add centroid size to qdata
 qdata$csz <- Y.gpa$Csize
 
-# spatial
+# spatial attributes
 knitr::include_graphics('./images/fig.map.jpg')
 
 # print updated qdata with centroid size
@@ -70,7 +68,7 @@ knitr::kable(qdata,
 
 ## Principal Components Analysis
 
-Principal components analysis [@RN1746] was used to visualise shape variation among the bottles. The shape changes described by each principal axis are commonly visualized using thin-plate spline warping of a reference 3D mesh [@RN1731;@RN479]. 
+Principal components analysis [@RN1746] was used to visualise shape variation among the bottles. The shape changes described by each principal axis are commonly visualised using thin-plate spline warping of a reference 3D mesh [@RN1731;@RN479]. 
 
 ```{r pca, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # principal components analysis
@@ -80,11 +78,35 @@ summary(pca)
 
 ## Define models
 
-A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. To assess whether shape changes with size (allometry), and differs by group (region), Procrustes ANOVAs [@RN1749] were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. 
+A residual randomisation permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. To assess whether shape changes differ by group (geography and time), Procrustes ANOVAs [@RN1749] were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756].
 
 ### Size and shape
 
 ```{r def.mod.1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# size
+fit.sz.geo <- procD.lm(size ~ geo,
+                data = gdf,
+                print.progress = FALSE,
+                iter = 9999)
+
+# size
+fit.sz.time <- procD.lm(size ~ time,
+                data = gdf,
+                print.progress = FALSE,
+                iter = 9999)
+
+# shape
+fit.sh.geo <- procD.lm(shape ~ geo,
+                data = gdf,
+                print.progress = FALSE,
+                iter = 9999)
+
+# shape
+fit.sh.time <- procD.lm(shape ~ time,
+                data = gdf,
+                print.progress = FALSE,
+                iter = 9999)
+
 # size.geo
 fit.size <- procD.lm(size ~ geo * time,
                 data = gdf,
@@ -145,6 +167,18 @@ knitr::include_graphics('images/pca-warp.jpg')
 ### Procrustes ANOVA
 
 ```{r h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# ANOVA: do Caddo bottle sizes differ by geo?
+anova(fit.sz.geo)
+
+# ANOVA: do Caddo bottle sizes differ by time?
+anova(fit.sz.time)
+
+# ANOVA: do Caddo bottle shapes differ by geo?
+anova(fit.sh.geo)
+
+# ANOVA: do Caddo bottle shapes differ by time?
+anova(fit.sh.time)
+
 # ANOVA: do Caddo bottle sizes differ by geo + time?
 anova(fit.size)
 
