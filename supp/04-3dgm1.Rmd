@@ -1,12 +1,5 @@
 # Analysis of Caddo bottle morphology
 
-## Spatial
-
-```{r map, echo=TRUE}
-knitr::include_graphics('./images/fig.map.jpg')
-```
-
-
 ## Load packages + data
 
 ```{r load.data, echo = TRUE}
@@ -56,7 +49,7 @@ gdf <- geomorph.data.frame(shape = Y.gpa$coords,
                            comb = qdata$comb)
 ```
 
-```{r 3d.gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap="Results of generalized Procrustes analysis."}
+```{r 3d.gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # render 3d gpa plot
 #plot(Y.gpa)
 
@@ -65,6 +58,9 @@ knitr::include_graphics('images/gpa3d.png')
 
 # add centroid size to qdata
 qdata$csz <- Y.gpa$Csize
+
+# spatial
+knitr::include_graphics('./images/fig.map.jpg')
 
 # print updated qdata with centroid size
 knitr::kable(qdata, 
@@ -89,13 +85,13 @@ A residual randomization permutation procedure (RRPP; n = 10,000 permutations) w
 ### Size and shape
 
 ```{r def.mod.1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# shape
+# size.geo
 fit.size <- procD.lm(size ~ geo * time,
                 data = gdf,
                 print.progress = FALSE,
                 iter = 9999)
 
-# shape
+# shape.geo
 fit.shape <- procD.lm(shape ~ geo * time,
                 data = gdf,
                 print.progress = FALSE,
@@ -141,15 +137,18 @@ pc.plot <- plot(pca,
                     shapeHulls(pc.plot, 
                              groups = comb,
                              group.cols = col.hull)
+
+# pca warp                   
+knitr::include_graphics('images/pca-warp.jpg')
 ```
 
 ### Procrustes ANOVA
 
 ```{r h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# ANOVA: do Caddo bottle shapes differ by comb?
+# ANOVA: do Caddo bottle sizes differ by geo + time?
 anova(fit.size)
 
-# ANOVA: do Caddo bottle shapes differ by comb?
+# ANOVA: do Caddo bottle shapes differ by geo + time?
 anova(fit.shape)
 ```
 
@@ -173,35 +172,35 @@ plot(mean$`south, late historic`)
 # comparison plots
 plotRefToTarget(mean$`north, formative early`, 
                 mean$`north, late historic`, 
-                method = "vector",
-                mag = 2)
+                method = c("points"),
+                mag = 1)
 
 plotRefToTarget(mean$`north, formative early`, 
                 mean$`south, formative early`, 
-                method = "vector",
-                mag = 2)
+                method = "points",
+                mag = 1)
 
 plotRefToTarget(mean$`north, formative early`, 
                 mean$`south, late historic`, 
-                method = "vector",
-                mag = 2)
+                method = "points",
+                mag = 1)
 
 plotRefToTarget(mean$`north, late historic`, 
                 mean$`south, formative early`, 
-                method = "vector",
-                mag = 2)
+                method = "points",
+                mag = 1)
 
 plotRefToTarget(mean$`north, late historic`, 
                 mean$`south, late historic`, 
-                method = "vector",
-                mag = 2)
+                method = "points",
+                mag = 1)
 
 plotRefToTarget(mean$`south, formative early`, 
                 mean$`south, late historic`, 
-                method = "vector",
-                mag = 2)
+                method = "points",
+                mag = 1)
 
-##knitr::include_graphics('images/mshape.jpg')
+knitr::include_graphics('images/comp.composite.jpg')
 ```
 
 ## Trajectory analysis
@@ -222,8 +221,10 @@ TP <- plot(TA,
            bg = as.numeric(qdata$time),
            cex = 0.9,
            col = "gray")
-add.trajectories(TP, traj.pch = c(15, 19), 
+add.trajectories(TP, traj.pch = c(15, 19),
                  start.bg = 1, 
                  end.bg = 2)
+
+knitr::include_graphics('images/trajectory.jpg')
 # end of code
 ```
