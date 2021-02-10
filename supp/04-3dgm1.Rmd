@@ -57,9 +57,6 @@ knitr::include_graphics('images/gpa3d.png')
 # add centroid size to qdata
 qdata$csz <- Y.gpa$Csize
 
-# spatial attributes
-knitr::include_graphics('./images/fig.map.jpg')
-
 # print updated qdata with centroid size
 knitr::kable(qdata, 
              align = "lccccc", 
