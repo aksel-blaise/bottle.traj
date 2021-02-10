@@ -168,9 +168,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#load-packages-data-1"><i class="fa fa-check"></i><b>4.1</b> Load packages + data</a></li>
 <li class="chapter" data-level="4.2" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#generalised-procrustes-analysis-1"><i class="fa fa-check"></i><b>4.2</b> Generalised Procrustes Analysis</a></li>
 <li class="chapter" data-level="4.3" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#principal-components-analysis-2"><i class="fa fa-check"></i><b>4.3</b> Principal Components Analysis</a></li>
-<li class="chapter" data-level="4.4" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#define-models-1"><i class="fa fa-check"></i><b>4.4</b> Define models</a></li>
-<li class="chapter" data-level="4.5" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#procrustes-anova-h1"><i class="fa fa-check"></i><b>4.5</b> Procrustes ANOVA (H1)</a></li>
-<li class="chapter" data-level="4.6" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#procrustes-anova-h2"><i class="fa fa-check"></i><b>4.6</b> Procrustes ANOVA (H2)</a></li>
+<li class="chapter" data-level="4.4" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#define-models-1"><i class="fa fa-check"></i><b>4.4</b> Define models</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#hypothesis"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="caddo-bottle-asymmetry.html"><a href="caddo-bottle-asymmetry.html#procrustes-anova-1"><i class="fa fa-check"></i><b>4.5</b> Procrustes ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -195,789 +197,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="caddo-bottle-asymmetry" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Caddo bottle asymmetry</h1>
-<p>In studies of ceramic morphology, an analysis of bilateral/object symmetry can yield useful insights related to <em>design intent</em>, provided it is assumed that the goal of the potter was to achieve a fully-symmetrical form. Within that framework, deviation from bilateral symmetry (fluctuating asymmetry) can serve as a useful measure of <em>skill</em> and/or <em>differential production</em>, and both measures have utility in spatial and temporal comparisons.</p>
+<p>In studies of ceramic morphology, an analysis of bilateral/object symmetry can yield useful insights related to <em>design intent</em>, provided we assume that the goal of the potter was to produce a symmetrical vessel. Within that framework, deviation from bilateral symmetry (fluctuating asymmetry) can serve as a useful measure of <em>production stability</em>, <em>differential production practices</em>, and/or <em>skill</em>; all of which have added utility in comparisons of spatial and temporal attributes.</p>
 <div id="load-packages-data-1" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Load packages + data</h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="caddo-bottle-asymmetry.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb45-2"><a href="caddo-bottle-asymmetry.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="caddo-bottle-asymmetry.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;geomorphR/geomorph&quot;, ref = &quot;Stable&quot;, build_vignettes = TRUE)</span></span>
-<span id="cb45-4"><a href="caddo-bottle-asymmetry.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb45-5"><a href="caddo-bottle-asymmetry.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomorph)</span>
-<span id="cb45-6"><a href="caddo-bottle-asymmetry.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb45-7"><a href="caddo-bottle-asymmetry.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
-<span id="cb45-8"><a href="caddo-bottle-asymmetry.html#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="caddo-bottle-asymmetry.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read GM data</span></span>
-<span id="cb45-10"><a href="caddo-bottle-asymmetry.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;readmulti.csv.R&#39;</span>)</span>
-<span id="cb45-11"><a href="caddo-bottle-asymmetry.html#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-12"><a href="caddo-bottle-asymmetry.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># read .csv files</span></span>
-<span id="cb45-13"><a href="caddo-bottle-asymmetry.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./data&quot;</span>)</span>
-<span id="cb45-14"><a href="caddo-bottle-asymmetry.html#cb45-14" aria-hidden="true" tabindex="-1"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb45-15"><a href="caddo-bottle-asymmetry.html#cb45-15" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">readmulti.csv</span>(filelist)</span>
-<span id="cb45-16"><a href="caddo-bottle-asymmetry.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span>
-<span id="cb45-17"><a href="caddo-bottle-asymmetry.html#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-18"><a href="caddo-bottle-asymmetry.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co"># read qualitative data</span></span>
-<span id="cb45-19"><a href="caddo-bottle-asymmetry.html#cb45-19" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;qdata.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb45-20"><a href="caddo-bottle-asymmetry.html#cb45-20" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> qdata[<span class="fu">match</span>(<span class="fu">dimnames</span>(coords)[[<span class="dv">3</span>]],<span class="fu">rownames</span>(qdata)),]</span>
-<span id="cb45-21"><a href="caddo-bottle-asymmetry.html#cb45-21" aria-hidden="true" tabindex="-1"></a>land.pairs<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;asymmetry1.csv&quot;</span>,<span class="at">header=</span><span class="cn">TRUE</span>)</span>
-<span id="cb45-22"><a href="caddo-bottle-asymmetry.html#cb45-22" aria-hidden="true" tabindex="-1"></a>ind<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(filelist))</span>
-<span id="cb45-23"><a href="caddo-bottle-asymmetry.html#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-24"><a href="caddo-bottle-asymmetry.html#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co"># print qdata</span></span>
-<span id="cb45-25"><a href="caddo-bottle-asymmetry.html#cb45-25" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(qdata, <span class="at">align =</span> <span class="st">&quot;lcccc&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Attributes included in qdata.&quot;</span>)</span></code></pre></div>
-<table>
-<caption>(#tab:load.data.asymm)Attributes included in qdata.</caption>
-<colgroup>
-<col width="10%" />
-<col width="19%" />
-<col width="22%" />
-<col width="6%" />
-<col width="16%" />
-<col width="23%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">site</th>
-<th align="center">type</th>
-<th align="center">geo</th>
-<th align="center">time</th>
-<th align="center">comb</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1054</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">1073</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">132</td>
-<td align="left">Paul Mitchell</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">142</td>
-<td align="left">Allen Plantation</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">152</td>
-<td align="left">Smithport Landing</td>
-<td align="center">Smithport Plain</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">157</td>
-<td align="left">Smithport Landing</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">16</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">16sa37-121</td>
-<td align="left">Eleven Ton Bridge</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">18</td>
-<td align="left">Pohler Coll</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">19-361</td>
-<td align="left">George C Davis</td>
-<td align="center">Holly Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">19-4020</td>
-<td align="left">George C Davis</td>
-<td align="center">Holly Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">Mustang Creek Mound</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">20</td>
-<td align="left">Pohler Coll</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">2007.18.02</td>
-<td align="left">Green</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">2015-1</td>
-<td align="left">George C Davis</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">2097-1</td>
-<td align="left">George C Davis</td>
-<td align="center">Holly Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">23</td>
-<td align="left">Pohler Coll</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">24</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">256</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">267</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">269</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">27</td>
-<td align="left">Pohler Coll</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">271</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">29</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">30</td>
-<td align="left">Pohler Coll</td>
-<td align="center">Maxey Noded Redware</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">31-1-79</td>
-<td align="left">Poole</td>
-<td align="center">Maxey Noded Redware</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">31</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">317</td>
-<td align="left">Belcher Mound</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">325</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">340</td>
-<td align="left">Belcher Mound</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">361</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">363</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">404</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">41sy25-2</td>
-<td align="left">S. H. Latham</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">42</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">427</td>
-<td align="left">Paul Mitchell</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">46</td>
-<td align="left">Pohler Coll</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">464</td>
-<td align="left">Paul Mitchell</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">55-16-3</td>
-<td align="left">Battle Mound</td>
-<td align="center">Haley Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">55-16-39</td>
-<td align="left">Battle Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">6-6-609</td>
-<td align="left">Hatchel</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">67</td>
-<td align="left">Paul Mitchell</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="left">Frank Norris Farm</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">775</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">78</td>
-<td align="left">Paul Mitchell</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">784</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Keno Trailed</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">787</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">788</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">8</td>
-<td align="left">Crenshaw Mound</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">803</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">804</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Hodges Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">805</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">845</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">852</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Keno Trailed</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">897</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">904</td>
-<td align="left">Greer Farm</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">929</td>
-<td align="left">Lawton Plantation</td>
-<td align="center">Keno Trailed</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">95</td>
-<td align="left">Smithport Landing</td>
-<td align="center">Smithport Plain</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">955</td>
-<td align="left">Gahagan Mound</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">956</td>
-<td align="left">Gahagan Mound</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">96</td>
-<td align="left">Smithport Landing</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">south</td>
-<td align="center">Formative-Early</td>
-<td align="center">south, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">979</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Hempstead Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">997</td>
-<td align="left">Belcher Mound</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">B1V3</td>
-<td align="left">Griffin</td>
-<td align="center">UID</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">BELCH1</td>
-<td align="left">Haley Place</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">FIN-S18</td>
-<td align="left">Vanderpool</td>
-<td align="center">UID</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">FIN-S3</td>
-<td align="left">Vanderpool</td>
-<td align="center">Hume Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">FIN-S4</td>
-<td align="left">Vanderpool</td>
-<td align="center">Poynor Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">FS7</td>
-<td align="left">Hatchel</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">HBE1</td>
-<td align="left">Haley Place</td>
-<td align="center">Belcher Engraved</td>
-<td align="center">north</td>
-<td align="center">Late-Historic</td>
-<td align="center">north, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">HCN3</td>
-<td align="left">Hancock</td>
-<td align="center">UID</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">HE3</td>
-<td align="left">Haley Place</td>
-<td align="center">Haley Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">HEB36</td>
-<td align="left">Haley Place</td>
-<td align="center">Haley Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">HEB40</td>
-<td align="left">Haley Place</td>
-<td align="center">Haley Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">HFE1</td>
-<td align="left">Haley Place</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">HFE2</td>
-<td align="left">Haley Place</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">HFE3</td>
-<td align="left">Haley Place</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">HFE4</td>
-<td align="left">Haley Place</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">HFE5</td>
-<td align="left">Haley Place</td>
-<td align="center">Hickory Fine Engraved</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">MFB</td>
-<td align="left">Hancock</td>
-<td align="center">UID</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">SMPRTPLN1</td>
-<td align="left">Haley Place</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="even">
-<td align="left">SMPRTPLN2</td>
-<td align="left">Haley Place</td>
-<td align="center">Smithport Plain</td>
-<td align="center">north</td>
-<td align="center">Formative-Early</td>
-<td align="center">north, formative early</td>
-</tr>
-<tr class="odd">
-<td align="left">SMU16</td>
-<td align="left">Bison B</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">SMU34</td>
-<td align="left">Bison B</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">SMU67</td>
-<td align="left">Bison B</td>
-<td align="center">Taylor Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">tyson</td>
-<td align="left">Tyson</td>
-<td align="center">Tyson Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">x16sa4-17</td>
-<td align="left">Bison B</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">x16sa4-2</td>
-<td align="left">Bison B</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="odd">
-<td align="left">x16sa4-26</td>
-<td align="left">Bison B</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-<tr class="even">
-<td align="left">x16sa4-65</td>
-<td align="left">Bison B</td>
-<td align="center">Wilder Engraved</td>
-<td align="center">south</td>
-<td align="center">Late-Historic</td>
-<td align="center">south, late historic</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="caddo-bottle-asymmetry.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb37-2"><a href="caddo-bottle-asymmetry.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="caddo-bottle-asymmetry.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;geomorphR/geomorph&quot;, ref = &quot;Stable&quot;, build_vignettes = TRUE)</span></span>
+<span id="cb37-4"><a href="caddo-bottle-asymmetry.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb37-5"><a href="caddo-bottle-asymmetry.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomorph)</span>
+<span id="cb37-6"><a href="caddo-bottle-asymmetry.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb37-7"><a href="caddo-bottle-asymmetry.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
+<span id="cb37-8"><a href="caddo-bottle-asymmetry.html#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="caddo-bottle-asymmetry.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read GM data</span></span>
+<span id="cb37-10"><a href="caddo-bottle-asymmetry.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;readmulti.csv.R&#39;</span>)</span>
+<span id="cb37-11"><a href="caddo-bottle-asymmetry.html#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="caddo-bottle-asymmetry.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># read .csv files</span></span>
+<span id="cb37-13"><a href="caddo-bottle-asymmetry.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./data&quot;</span>)</span>
+<span id="cb37-14"><a href="caddo-bottle-asymmetry.html#cb37-14" aria-hidden="true" tabindex="-1"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb37-15"><a href="caddo-bottle-asymmetry.html#cb37-15" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">readmulti.csv</span>(filelist)</span>
+<span id="cb37-16"><a href="caddo-bottle-asymmetry.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span>
+<span id="cb37-17"><a href="caddo-bottle-asymmetry.html#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="caddo-bottle-asymmetry.html#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co"># read qualitative data</span></span>
+<span id="cb37-19"><a href="caddo-bottle-asymmetry.html#cb37-19" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;qdata.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb37-20"><a href="caddo-bottle-asymmetry.html#cb37-20" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> qdata[<span class="fu">match</span>(<span class="fu">dimnames</span>(coords)[[<span class="dv">3</span>]],<span class="fu">rownames</span>(qdata)),]</span>
+<span id="cb37-21"><a href="caddo-bottle-asymmetry.html#cb37-21" aria-hidden="true" tabindex="-1"></a>land.pairs<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;asymmetry1.csv&quot;</span>,<span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb37-22"><a href="caddo-bottle-asymmetry.html#cb37-22" aria-hidden="true" tabindex="-1"></a>ind<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(filelist))</span></code></pre></div>
 </div>
 <div id="generalised-procrustes-analysis-1" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Generalised Procrustes Analysis</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="caddo-bottle-asymmetry.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa for bilateral (object) asymmetry</span></span>
-<span id="cb46-2"><a href="caddo-bottle-asymmetry.html#cb46-2" aria-hidden="true" tabindex="-1"></a>res.bilat <span class="ot">&lt;-</span> <span class="fu">bilat.symmetry</span>(coords,</span>
-<span id="cb46-3"><a href="caddo-bottle-asymmetry.html#cb46-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ind =</span> ind, </span>
-<span id="cb46-4"><a href="caddo-bottle-asymmetry.html#cb46-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">object.sym =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb46-5"><a href="caddo-bottle-asymmetry.html#cb46-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">land.pairs =</span> land.pairs,</span>
-<span id="cb46-6"><a href="caddo-bottle-asymmetry.html#cb46-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">RRPP =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb46-7"><a href="caddo-bottle-asymmetry.html#cb46-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">iter =</span> <span class="dv">9999</span>,</span>
-<span id="cb46-8"><a href="caddo-bottle-asymmetry.html#cb46-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-9"><a href="caddo-bottle-asymmetry.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.bilat)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="caddo-bottle-asymmetry.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa for bilateral (object) asymmetry</span></span>
+<span id="cb38-2"><a href="caddo-bottle-asymmetry.html#cb38-2" aria-hidden="true" tabindex="-1"></a>res.bilat <span class="ot">&lt;-</span> <span class="fu">bilat.symmetry</span>(coords,</span>
+<span id="cb38-3"><a href="caddo-bottle-asymmetry.html#cb38-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ind =</span> ind, </span>
+<span id="cb38-4"><a href="caddo-bottle-asymmetry.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">object.sym =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-5"><a href="caddo-bottle-asymmetry.html#cb38-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">land.pairs =</span> land.pairs,</span>
+<span id="cb38-6"><a href="caddo-bottle-asymmetry.html#cb38-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">RRPP =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-7"><a href="caddo-bottle-asymmetry.html#cb38-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">iter =</span> <span class="dv">9999</span>,</span>
+<span id="cb38-8"><a href="caddo-bottle-asymmetry.html#cb38-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb38-9"><a href="caddo-bottle-asymmetry.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.bilat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## bilat.symmetry(A = coords, ind = ind, object.sym = TRUE, land.pairs = land.pairs,  
@@ -998,22 +254,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Total    179 2.54335                                             
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="caddo-bottle-asymmetry.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric shape</span></span>
-<span id="cb48-2"><a href="caddo-bottle-asymmetry.html#cb48-2" aria-hidden="true" tabindex="-1"></a>symm.shape <span class="ot">&lt;-</span> res.bilat<span class="sc">$</span>symm.shape[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span>
-<span id="cb48-3"><a href="caddo-bottle-asymmetry.html#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="caddo-bottle-asymmetry.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all specimens in 2D</span></span>
-<span id="cb48-5"><a href="caddo-bottle-asymmetry.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plotAllSpecimens</span>(symm.shape)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="caddo-bottle-asymmetry.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric shape</span></span>
+<span id="cb40-2"><a href="caddo-bottle-asymmetry.html#cb40-2" aria-hidden="true" tabindex="-1"></a>symm.shape <span class="ot">&lt;-</span> res.bilat<span class="sc">$</span>symm.shape[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span>
+<span id="cb40-3"><a href="caddo-bottle-asymmetry.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="caddo-bottle-asymmetry.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all specimens in 2D</span></span>
+<span id="cb40-5"><a href="caddo-bottle-asymmetry.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plotAllSpecimens</span>(symm.shape)</span></code></pre></div>
 <div class="figure">
 <img src="supp_files/figure-html/symm.shape-1.png" alt="Symmetric shape component plotted in 2D." width="100%" />
 <p class="caption">
 (#fig:symm.shape)Symmetric shape component plotted in 2D.
 </p>
 </div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="caddo-bottle-asymmetry.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># asymmetric shape</span></span>
-<span id="cb49-2"><a href="caddo-bottle-asymmetry.html#cb49-2" aria-hidden="true" tabindex="-1"></a>asymm.shape <span class="ot">&lt;-</span> res.bilat<span class="sc">$</span>FA.component[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span>
-<span id="cb49-3"><a href="caddo-bottle-asymmetry.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="caddo-bottle-asymmetry.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all specimens in 2D</span></span>
-<span id="cb49-5"><a href="caddo-bottle-asymmetry.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plotAllSpecimens</span>(asymm.shape)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="caddo-bottle-asymmetry.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># asymmetric shape</span></span>
+<span id="cb41-2"><a href="caddo-bottle-asymmetry.html#cb41-2" aria-hidden="true" tabindex="-1"></a>asymm.shape <span class="ot">&lt;-</span> res.bilat<span class="sc">$</span>FA.component[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span>
+<span id="cb41-3"><a href="caddo-bottle-asymmetry.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="caddo-bottle-asymmetry.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all specimens in 2D</span></span>
+<span id="cb41-5"><a href="caddo-bottle-asymmetry.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plotAllSpecimens</span>(asymm.shape)</span></code></pre></div>
 <div class="figure">
 <img src="supp_files/figure-html/asymm.shape-1.png" alt="Asymmetric shape component plotted in 2D." width="100%" />
 <p class="caption">
@@ -1023,15 +279,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="principal-components-analysis-2" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Principal Components Analysis</h2>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="caddo-bottle-asymmetry.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geomorph data frame</span></span>
-<span id="cb50-2"><a href="caddo-bottle-asymmetry.html#cb50-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> <span class="fu">geomorph.data.frame</span>(<span class="at">shape =</span> res.bilat<span class="sc">$</span>symm.shape, </span>
-<span id="cb50-3"><a href="caddo-bottle-asymmetry.html#cb50-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ashape =</span> res.bilat<span class="sc">$</span>FA.component,</span>
-<span id="cb50-4"><a href="caddo-bottle-asymmetry.html#cb50-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">time =</span> qdata<span class="sc">$</span>time,</span>
-<span id="cb50-5"><a href="caddo-bottle-asymmetry.html#cb50-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">geo =</span> qdata<span class="sc">$</span>geo)</span>
-<span id="cb50-6"><a href="caddo-bottle-asymmetry.html#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="caddo-bottle-asymmetry.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis (symmetric)</span></span>
-<span id="cb50-8"><a href="caddo-bottle-asymmetry.html#cb50-8" aria-hidden="true" tabindex="-1"></a>pca1 <span class="ot">&lt;-</span> <span class="fu">gm.prcomp</span>(res.bilat<span class="sc">$</span>symm.shape)</span>
-<span id="cb50-9"><a href="caddo-bottle-asymmetry.html#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca1)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="caddo-bottle-asymmetry.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geomorph data frame</span></span>
+<span id="cb42-2"><a href="caddo-bottle-asymmetry.html#cb42-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> <span class="fu">geomorph.data.frame</span>(<span class="at">shape =</span> res.bilat<span class="sc">$</span>symm.shape, </span>
+<span id="cb42-3"><a href="caddo-bottle-asymmetry.html#cb42-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ashape =</span> res.bilat<span class="sc">$</span>FA.component,</span>
+<span id="cb42-4"><a href="caddo-bottle-asymmetry.html#cb42-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">time =</span> qdata<span class="sc">$</span>time,</span>
+<span id="cb42-5"><a href="caddo-bottle-asymmetry.html#cb42-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">geo =</span> qdata<span class="sc">$</span>geo)</span>
+<span id="cb42-6"><a href="caddo-bottle-asymmetry.html#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="caddo-bottle-asymmetry.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis (symmetric)</span></span>
+<span id="cb42-8"><a href="caddo-bottle-asymmetry.html#cb42-8" aria-hidden="true" tabindex="-1"></a>pca1 <span class="ot">&lt;-</span> <span class="fu">gm.prcomp</span>(res.bilat<span class="sc">$</span>symm.shape)</span>
+<span id="cb42-9"><a href="caddo-bottle-asymmetry.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca1)</span></code></pre></div>
 <pre><code>## 
 ## Ordination type: Principal Component Analysis 
 ## Centering by OLS mean
@@ -1072,23 +328,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Eigenvalues            2.892009e-18
 ## Proportion of Variance 2.071587e-16
 ## Cumulative Proportion  1.000000e+00</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="caddo-bottle-asymmetry.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
-<span id="cb52-2"><a href="caddo-bottle-asymmetry.html#cb52-2" aria-hidden="true" tabindex="-1"></a>pch.gps.time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)[<span class="fu">as.factor</span>(qdata<span class="sc">$</span>time)]</span>
-<span id="cb52-3"><a href="caddo-bottle-asymmetry.html#cb52-3" aria-hidden="true" tabindex="-1"></a>col.gps.time <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(qdata<span class="sc">$</span>time)]</span>
-<span id="cb52-4"><a href="caddo-bottle-asymmetry.html#cb52-4" aria-hidden="true" tabindex="-1"></a>col.hull <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#C27D38&quot;</span>,<span class="st">&quot;#798E87&quot;</span>)</span>
-<span id="cb52-5"><a href="caddo-bottle-asymmetry.html#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="caddo-bottle-asymmetry.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca1 (symmetric)</span></span>
-<span id="cb52-7"><a href="caddo-bottle-asymmetry.html#cb52-7" aria-hidden="true" tabindex="-1"></a>pc.plot1 <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca1, </span>
-<span id="cb52-8"><a href="caddo-bottle-asymmetry.html#cb52-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
-<span id="cb52-9"><a href="caddo-bottle-asymmetry.html#cb52-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps.time,</span>
-<span id="cb52-10"><a href="caddo-bottle-asymmetry.html#cb52-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps.time)</span>
-<span id="cb52-11"><a href="caddo-bottle-asymmetry.html#cb52-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot1, </span>
-<span id="cb52-12"><a href="caddo-bottle-asymmetry.html#cb52-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> qdata<span class="sc">$</span>time,</span>
-<span id="cb52-13"><a href="caddo-bottle-asymmetry.html#cb52-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="caddo-bottle-asymmetry.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
+<span id="cb44-2"><a href="caddo-bottle-asymmetry.html#cb44-2" aria-hidden="true" tabindex="-1"></a>pch.gps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)[<span class="fu">as.factor</span>(qdata<span class="sc">$</span>geo)]</span>
+<span id="cb44-3"><a href="caddo-bottle-asymmetry.html#cb44-3" aria-hidden="true" tabindex="-1"></a>col.gps <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(qdata<span class="sc">$</span>geo)]</span>
+<span id="cb44-4"><a href="caddo-bottle-asymmetry.html#cb44-4" aria-hidden="true" tabindex="-1"></a>col.hull <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#798E87&quot;</span>,<span class="st">&quot;#C27D38&quot;</span>)</span>
+<span id="cb44-5"><a href="caddo-bottle-asymmetry.html#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="caddo-bottle-asymmetry.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca1 (symmetric)</span></span>
+<span id="cb44-7"><a href="caddo-bottle-asymmetry.html#cb44-7" aria-hidden="true" tabindex="-1"></a>pc.plot1 <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca1, </span>
+<span id="cb44-8"><a href="caddo-bottle-asymmetry.html#cb44-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
+<span id="cb44-9"><a href="caddo-bottle-asymmetry.html#cb44-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps,</span>
+<span id="cb44-10"><a href="caddo-bottle-asymmetry.html#cb44-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps)</span>
+<span id="cb44-11"><a href="caddo-bottle-asymmetry.html#cb44-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot1, </span>
+<span id="cb44-12"><a href="caddo-bottle-asymmetry.html#cb44-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> qdata<span class="sc">$</span>geo,</span>
+<span id="cb44-13"><a href="caddo-bottle-asymmetry.html#cb44-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
 <p><img src="supp_files/figure-html/pca.asymm-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="caddo-bottle-asymmetry.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis (asymmetric)</span></span>
-<span id="cb53-2"><a href="caddo-bottle-asymmetry.html#cb53-2" aria-hidden="true" tabindex="-1"></a>pca2 <span class="ot">&lt;-</span> <span class="fu">gm.prcomp</span>(res.bilat<span class="sc">$</span>asymm.shape)</span>
-<span id="cb53-3"><a href="caddo-bottle-asymmetry.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca2)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="caddo-bottle-asymmetry.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis (asymmetric)</span></span>
+<span id="cb45-2"><a href="caddo-bottle-asymmetry.html#cb45-2" aria-hidden="true" tabindex="-1"></a>pca2 <span class="ot">&lt;-</span> <span class="fu">gm.prcomp</span>(res.bilat<span class="sc">$</span>asymm.shape)</span>
+<span id="cb45-3"><a href="caddo-bottle-asymmetry.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca2)</span></code></pre></div>
 <pre><code>## 
 ## Ordination type: Principal Component Analysis 
 ## Centering by OLS mean
@@ -1137,49 +393,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Eigenvalues            1.823096e-19 1.537823e-19
 ## Proportion of Variance 1.454096e-16 1.226563e-16
 ## Cumulative Proportion  1.000000e+00 1.000000e+00</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="caddo-bottle-asymmetry.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca2 (asymmetric)</span></span>
-<span id="cb55-2"><a href="caddo-bottle-asymmetry.html#cb55-2" aria-hidden="true" tabindex="-1"></a>pc.plot2 <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca2, </span>
-<span id="cb55-3"><a href="caddo-bottle-asymmetry.html#cb55-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
-<span id="cb55-4"><a href="caddo-bottle-asymmetry.html#cb55-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps.time,</span>
-<span id="cb55-5"><a href="caddo-bottle-asymmetry.html#cb55-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps.time)</span>
-<span id="cb55-6"><a href="caddo-bottle-asymmetry.html#cb55-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot2, </span>
-<span id="cb55-7"><a href="caddo-bottle-asymmetry.html#cb55-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> qdata<span class="sc">$</span>time,</span>
-<span id="cb55-8"><a href="caddo-bottle-asymmetry.html#cb55-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="caddo-bottle-asymmetry.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca2 (asymmetric)</span></span>
+<span id="cb47-2"><a href="caddo-bottle-asymmetry.html#cb47-2" aria-hidden="true" tabindex="-1"></a>pc.plot2 <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca2, </span>
+<span id="cb47-3"><a href="caddo-bottle-asymmetry.html#cb47-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
+<span id="cb47-4"><a href="caddo-bottle-asymmetry.html#cb47-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps,</span>
+<span id="cb47-5"><a href="caddo-bottle-asymmetry.html#cb47-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps)</span>
+<span id="cb47-6"><a href="caddo-bottle-asymmetry.html#cb47-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot2, </span>
+<span id="cb47-7"><a href="caddo-bottle-asymmetry.html#cb47-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> qdata<span class="sc">$</span>geo,</span>
+<span id="cb47-8"><a href="caddo-bottle-asymmetry.html#cb47-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
 <p><img src="supp_files/figure-html/pca.asymm-2.png" width="100%" /></p>
 </div>
 <div id="define-models-1" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Define models</h2>
 <p>A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs <span class="citation">(<a href="references.html#ref-RN1655" role="doc-biblioref">Adams and Collyer 2015</a>; <a href="references.html#ref-RN11775" role="doc-biblioref">Michael L. Collyer and Adams 2018</a>)</span>, which has higher statistical power and a greater ability to identify patterns in the data should they be present <span class="citation">(<a href="references.html#ref-RN1719" role="doc-biblioref">Anderson and Ter Braak 2003</a>)</span>. To assess whether shape changes with size (allometry), and differs by group (region), Procrustes ANOVAs <span class="citation">(<a href="references.html#ref-RN1749" role="doc-biblioref">Goodall 1991</a>)</span> were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions <span class="citation">(<a href="references.html#ref-RN1756" role="doc-biblioref">M. L. Collyer, Sekora, and Adams 2015</a>)</span>.</p>
-<p><em>Hypothesis 1: There is a difference in the symmetric shape of Caddo bottles through time.</em></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="caddo-bottle-asymmetry.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric shape as a function of time</span></span>
-<span id="cb56-2"><a href="caddo-bottle-asymmetry.html#cb56-2" aria-hidden="true" tabindex="-1"></a>fit.time <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> time,</span>
-<span id="cb56-3"><a href="caddo-bottle-asymmetry.html#cb56-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> gdf,</span>
-<span id="cb56-4"><a href="caddo-bottle-asymmetry.html#cb56-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb56-5"><a href="caddo-bottle-asymmetry.html#cb56-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb56-6"><a href="caddo-bottle-asymmetry.html#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-7"><a href="caddo-bottle-asymmetry.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># asymmetric shape as a function of time</span></span>
-<span id="cb56-8"><a href="caddo-bottle-asymmetry.html#cb56-8" aria-hidden="true" tabindex="-1"></a>fit.time.asymm <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(ashape <span class="sc">~</span> time,</span>
-<span id="cb56-9"><a href="caddo-bottle-asymmetry.html#cb56-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> gdf,</span>
-<span id="cb56-10"><a href="caddo-bottle-asymmetry.html#cb56-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb56-11"><a href="caddo-bottle-asymmetry.html#cb56-11" aria-hidden="true" tabindex="-1"></a>                           <span class="at">iter =</span> <span class="dv">9999</span>)</span></code></pre></div>
-<p><em>Hypothesis 2: There is a difference in the symmetric shape of Caddo bottles by community of practice.</em></p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="caddo-bottle-asymmetry.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric shape as a function of geography</span></span>
-<span id="cb57-2"><a href="caddo-bottle-asymmetry.html#cb57-2" aria-hidden="true" tabindex="-1"></a>fit.geo <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo,</span>
-<span id="cb57-3"><a href="caddo-bottle-asymmetry.html#cb57-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> gdf,</span>
-<span id="cb57-4"><a href="caddo-bottle-asymmetry.html#cb57-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb57-5"><a href="caddo-bottle-asymmetry.html#cb57-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb57-6"><a href="caddo-bottle-asymmetry.html#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="caddo-bottle-asymmetry.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># asymmetric shape as a function of geography</span></span>
-<span id="cb57-8"><a href="caddo-bottle-asymmetry.html#cb57-8" aria-hidden="true" tabindex="-1"></a>fit.geo.asymm <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(ashape <span class="sc">~</span> geo,</span>
-<span id="cb57-9"><a href="caddo-bottle-asymmetry.html#cb57-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> gdf,</span>
-<span id="cb57-10"><a href="caddo-bottle-asymmetry.html#cb57-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb57-11"><a href="caddo-bottle-asymmetry.html#cb57-11" aria-hidden="true" tabindex="-1"></a>                           <span class="at">iter =</span> <span class="dv">9999</span>)</span></code></pre></div>
+<div id="hypothesis" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Hypothesis</h3>
+<p><em>There is a difference in the symmetric shape of Caddo bottles by community of practice through time.</em></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="caddo-bottle-asymmetry.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric shape as a function of geography through time</span></span>
+<span id="cb48-2"><a href="caddo-bottle-asymmetry.html#cb48-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
+<span id="cb48-3"><a href="caddo-bottle-asymmetry.html#cb48-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb48-4"><a href="caddo-bottle-asymmetry.html#cb48-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb48-5"><a href="caddo-bottle-asymmetry.html#cb48-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb48-6"><a href="caddo-bottle-asymmetry.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="caddo-bottle-asymmetry.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># asymmetric shape as a function of geography through time</span></span>
+<span id="cb48-8"><a href="caddo-bottle-asymmetry.html#cb48-8" aria-hidden="true" tabindex="-1"></a>fit.asymm <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(ashape <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
+<span id="cb48-9"><a href="caddo-bottle-asymmetry.html#cb48-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> gdf,</span>
+<span id="cb48-10"><a href="caddo-bottle-asymmetry.html#cb48-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb48-11"><a href="caddo-bottle-asymmetry.html#cb48-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">iter =</span> <span class="dv">9999</span>)</span></code></pre></div>
 </div>
-<div id="procrustes-anova-h1" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Procrustes ANOVA (H1)</h2>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="caddo-bottle-asymmetry.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do symmetric Caddo bottle shapes differ by time?</span></span>
-<span id="cb58-2"><a href="caddo-bottle-asymmetry.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="do">## potential differences in design intent?</span></span>
-<span id="cb58-3"><a href="caddo-bottle-asymmetry.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.time)</span></code></pre></div>
+</div>
+<div id="procrustes-anova-1" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Procrustes ANOVA</h2>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="caddo-bottle-asymmetry.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do symmetric Caddo bottle shapes differ by geography through time?</span></span>
+<span id="cb49-2"><a href="caddo-bottle-asymmetry.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1188,56 +434,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df      SS       MS     Rsq      F      Z Pr(&gt;F)    
-## time       1 0.16529 0.165292 0.13303 13.504 4.0594  1e-04 ***
-## Residuals 88 1.07718 0.012241 0.86697                         
-## Total     89 1.24247                                          
+##           Df      SS       MS     Rsq       F      Z Pr(&gt;F)    
+## geo        1 0.14693 0.146932 0.11826 14.2710 4.2184  1e-04 ***
+## time       1 0.16256 0.162565 0.13084 15.7893 4.1776  1e-04 ***
+## geo:time   1 0.04753 0.047528 0.03825  4.6162 2.4398 0.0066 ** 
+## Residuals 86 0.88545 0.010296 0.71265                          
+## Total     89 1.24247                                           
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: procD.lm(f1 = shape ~ time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="caddo-bottle-asymmetry.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do asymmetric Caddo bottle shapes differ by time?</span></span>
-<span id="cb60-2"><a href="caddo-bottle-asymmetry.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## potential differences in design intent?</span></span>
-<span id="cb60-3"><a href="caddo-bottle-asymmetry.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.time.asymm)</span></code></pre></div>
-<pre><code>## 
-## Analysis of Variance, using Residual Randomization
-## Permutation procedure: Randomization of null model residuals 
-## Number of permutations: 10000 
-## Estimation method: Ordinary Least Squares 
-## Sums of Squares and Cross-products: Type I 
-## Effect sizes (Z) based on F distributions
-## 
-##           Df      SS        MS     Rsq      F      Z Pr(&gt;F)
-## time       1 0.00225 0.0022498 0.02016 1.8108 1.1875 0.1203
-## Residuals 88 0.10934 0.0012424 0.97984                     
-## Total     89 0.11159                                       
-## 
-## Call: procD.lm(f1 = ashape ~ time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-</div>
-<div id="procrustes-anova-h2" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Procrustes ANOVA (H2)</h2>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="caddo-bottle-asymmetry.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do symmetric Caddo bottle shapes differ by geography?</span></span>
-<span id="cb62-2"><a href="caddo-bottle-asymmetry.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="do">## potential differences in skill?</span></span>
-<span id="cb62-3"><a href="caddo-bottle-asymmetry.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.geo)</span></code></pre></div>
-<pre><code>## 
-## Analysis of Variance, using Residual Randomization
-## Permutation procedure: Randomization of null model residuals 
-## Number of permutations: 10000 
-## Estimation method: Ordinary Least Squares 
-## Sums of Squares and Cross-products: Type I 
-## Effect sizes (Z) based on F distributions
-## 
-##           Df      SS       MS     Rsq      F      Z Pr(&gt;F)    
-## geo        1 0.14693 0.146932 0.11826 11.802 3.8969  1e-04 ***
-## Residuals 88 1.09554 0.012449 0.88174                         
-## Total     89 1.24247                                          
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Call: procD.lm(f1 = shape ~ geo, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="caddo-bottle-asymmetry.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do asymmetric Caddo bottle shapes differ by geography?</span></span>
-<span id="cb64-2"><a href="caddo-bottle-asymmetry.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="do">## potential difference in skill?</span></span>
-<span id="cb64-3"><a href="caddo-bottle-asymmetry.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.geo.asymm)</span></code></pre></div>
+## Call: procD.lm(f1 = shape ~ geo * time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="caddo-bottle-asymmetry.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do asymmetric Caddo bottle shapes differ by geography through time?</span></span>
+<span id="cb51-2"><a href="caddo-bottle-asymmetry.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.asymm)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1247,12 +455,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Effect sizes (Z) based on F distributions
 ## 
 ##           Df       SS         MS     Rsq      F        Z Pr(&gt;F)
-## geo        1 0.000844 0.00084401 0.00756 0.6707 -0.23708 0.5911
-## Residuals 88 0.110741 0.00125842 0.99244                       
+## geo        1 0.000844 0.00084401 0.00756 0.6786 -0.22078 0.5868
+## time       1 0.002245 0.00224492 0.02012 1.8049  1.17730 0.1226
+## geo:time   1 0.001532 0.00153165 0.01373 1.2315  0.61869 0.2683
+## Residuals 86 0.106965 0.00124377 0.95859                       
 ## Total     89 0.111585                                          
 ## 
-## Call: procD.lm(f1 = ashape ~ geo, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="caddo-bottle-asymmetry.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># end of code</span></span></code></pre></div>
+## Call: procD.lm(f1 = ashape ~ geo * time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="caddo-bottle-asymmetry.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># end of code</span></span></code></pre></div>
 
 </div>
 </div>
