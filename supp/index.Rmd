@@ -1,5 +1,5 @@
 --- 
-title: "Patterns of shape change for ceramic bottles recovered from the southern Caddo area"
+title: "Patterns of shape change for Caddo bottles recovered from the southern Caddo area"
 author: "Robert Z. Selden, Jr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -22,13 +22,12 @@ knitr::include_graphics('./images/hist.caddo.net.jpg')
 
 ## Primary findings
 
-* Caddo bottles from the northern and southern communities of practice differ in shape
 * The shape of Caddo bottles from the northern and southern communities of practice change through time
 * Patterns of northern and southern Caddo bottle shape change differ significantly
 
 ## Acknowledgments
 
-I extend my gratitude to the Caddo Nation of Oklahoma,the Material Sciences Laboratory at Southern Methodist University, the Williamson Museum at Northwestern State University, the Louisiana State Exhibit Museum, the Texas Archeological Research Laboratory at The University of Texas at Austin, and the Louisiana State University Museum of Natural Science for the requisite permissions, access, and space needed to generate 3D scans of Caddo bottles. Thanks also to Dean C. Adams, Emma Sherratt, Michael J. Shott, Hiram F. (Pete) Gregory, B. Sunday Eiselt, Julian A. Sitters, and Kersten Bergstrom for their constructive criticisms, comments, and suggestions throughout the development of this research design; to the editors for their invitation to submit this chapter; and the anonymous reviewers whose comments improved the manuscript. Development of the analytical workflow and production of 3D scans from the Clarence H. Webb collection was funded by a grant to the author (P14AP00138) from the National Center for Preservation Technology and Training. Production of 3D scan data for Hickory Engraved and Smithport Plain bottles from the Texas Archeological Research Laboratory was funded by a grant from the Texas Archeological Society, and the production of 3D scan data for previously repatriated Caddo bottles was funded by a grant from the Caddo Nation of Oklahoma.
+I extend my gratitude to the Caddo Nation of Oklahoma,the Material Sciences Laboratory at Southern Methodist University, the Williamson Museum at Northwestern State University, the Louisiana State Exhibit Museum, the Texas Archeological Research Laboratory at The University of Texas at Austin, and the Louisiana State University Museum of Natural Science for the requisite permissions, access, and space needed to generate 3D scans of Caddo bottles. Thanks also to Dean C. Adams, Emma Sherratt, Michael J. Shott, Hiram F. (Pete) Gregory, B. Sunday Eiselt, Julian A. Sitters, and Kersten Bergstrom for their constructive criticisms, comments, and suggestions throughout the development of this research design, and the anonymous reviewers whose comments improved the manuscript. Development of the analytical workflow and production of 3D scans from the Clarence H. Webb collection was funded by a grant to the author (P14AP00138) from the National Center for Preservation Technology and Training. Production of 3D scan data for Hickory Engraved and Smithport Plain bottles from the Texas Archeological Research Laboratory was funded by a grant from the Texas Archeological Society, and the production of 3D scan data for previously repatriated Caddo bottles was funded by a grant from the Caddo Nation of Oklahoma.
 
 ## Funding
 
@@ -36,4 +35,4 @@ Components of the analytical workflow were developed and funded by a Preservatio
 
 ## Data management
 
-The analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework [DOI: add doi here](https://github.com/aksel-blaise/bottle.traj).
+The analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework [DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/).

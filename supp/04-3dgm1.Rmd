@@ -26,9 +26,9 @@ qdata <- qdata[match(dimnames(coords)[[3]],
                      rownames(qdata)),]
 ```
 
-## Generalized Procrustes Analysis
+## Generalised Procrustes Analysis
 
-Landmark data were aligned to a global coordinate system [@RN11622;@RN11623;@RN11563], achieved through generalized Procrustes superimposition [@RN478] performed in R 4.0.2 [@R] using the `geomorph` library v. 3.3.1 [@RN11530;@RN1774]. Procrustes superimposition translates, scales, and rotates the coordinate data to allow for comparisons among objects [@RN11564;@RN478]. The `gebmorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN1646;@RN11563]. 
+Landmark data were aligned to a global coordinate system [@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN478] performed in R 4.0.3 [@R] using the `geomorph` library v. 3.3.2 [@RN11530;@RN1774]. Procrustes superimposition translates, scales, and rotates the coordinate data to allow for comparisons among objects [@RN11564;@RN478]. The `gebmorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN1646;@RN11563]. 
 
 ```{r gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # gpa
@@ -67,7 +67,7 @@ knitr::kable(qdata,
 
 ## Principal Components Analysis
 
-Principal components analysis [@RN1746] was used to visualise shape variation among the bottles The shape changes described by each principal axis are commonly visualized using thin-plate spline warping of a reference 3D mesh [@RN1731;@RN479]. 
+Principal components analysis [@RN1746] was used to visualise shape variation among the bottles. The shape changes described by each principal axis are commonly visualized using thin-plate spline warping of a reference 3D mesh [@RN1731;@RN479]. 
 
 ```{r pca, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # principal components analysis
