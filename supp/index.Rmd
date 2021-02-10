@@ -35,4 +35,4 @@ Components of the analytical workflow were developed and funded by a Preservatio
 
 ## Data management
 
-The analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework [DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/).
+The data and analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework ([DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/)).
