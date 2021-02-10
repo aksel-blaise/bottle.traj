@@ -257,5 +257,4 @@ add.trajectories(TP, traj.pch = c(15, 19),
                  end.bg = 2)
 
 knitr::include_graphics('images/trajectory.jpg')
-# end of code
 ```

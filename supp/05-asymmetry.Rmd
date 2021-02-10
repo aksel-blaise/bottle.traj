@@ -1,0 +1,166 @@
+# Caddo bottle asymmetry
+
+In studies of ceramic morphology, an analysis of bilateral/object symmetry can yield useful insights related to _design intent_, provided it is assumed that the goal of the potter was to achieve a symmetrical vessel. Within that framework, deviation from bilateral symmetry (fluctuating asymmetry) can serve as a useful measure of _stability_, _skill_ (do Caddo bottles become more symmetrical through time?) and/or _differential production_ (are the bottles from one community of practice more symmetrical than another?), and both measures have utility in spatial and temporal comparisons.
+
+## Load packages + data
+
+```{r load.data.asymm, echo = TRUE}
+# load packages
+
+# devtools::install_github("geomorphR/geomorph", ref = "Stable", build_vignettes = TRUE)
+library(here)
+library(geomorph)
+library(tidyverse)
+library(wesanderson)
+
+# read GM data
+source('readmulti.csv.R')
+
+# read .csv files
+setwd("./data")
+filelist <- list.files(pattern = ".csv")
+coords <- readmulti.csv(filelist)
+setwd("../")
+
+# read qualitative data
+qdata <- read.csv("qdata.csv", header = TRUE, row.names = 1)
+qdata <- qdata[match(dimnames(coords)[[3]],rownames(qdata)),]
+land.pairs<-read.csv("asymmetry1.csv",header=TRUE)
+ind<-rep(1:length(filelist))
+
+# print qdata
+knitr::kable(qdata, align = "lcccc", caption = "Attributes included in qdata.")
+```
+
+## Generalised Procrustes Analysis
+
+```{r assym.gpa, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# gpa for bilateral (object) asymmetry
+res.bilat <- bilat.symmetry(coords,
+                          ind = ind, 
+                          object.sym = TRUE,
+                          land.pairs = land.pairs,
+                          RRPP = TRUE,
+                          iter = 9999,
+                          print.progress = FALSE)
+summary(res.bilat)
+```
+
+```{r symm.shape, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap="Symmetric shape component plotted in 2D."}
+# symmetric shape
+symm.shape <- res.bilat$symm.shape[,1:2,]
+
+# plot all specimens in 2D
+plotAllSpecimens(symm.shape)
+```
+
+```{r asymm.shape, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap="Asymmetric shape component plotted in 2D."}
+# asymmetric shape
+asymm.shape <- res.bilat$FA.component[,1:2,]
+
+# plot all specimens in 2D
+plotAllSpecimens(asymm.shape)
+```
+
+## Principal Components Analysis
+
+```{r pca.asymm, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# geomorph data frame
+gdf <- geomorph.data.frame(shape = res.bilat$symm.shape, 
+                           ashape = res.bilat$FA.component,
+                           time = qdata$time,
+                           geo = qdata$geo)
+
+# principal components analysis (symmetric)
+pca1 <- gm.prcomp(res.bilat$symm.shape)
+summary(pca1)
+
+# set plot parameters
+pch.gps.time <- c(15,17)[as.factor(qdata$time)]
+col.gps.time <- wes_palette("Moonrise2")[as.factor(qdata$time)]
+col.hull <- c("#C27D38","#798E87")
+
+# plot pca1 (symmetric)
+pc.plot1 <- plot(pca1, 
+                 asp = 1,
+                 pch = pch.gps.time,
+                 col = col.gps.time)
+                    shapeHulls(pc.plot1, 
+                             groups = qdata$time,
+                             group.cols = col.hull)
+                    
+# principal components analysis (asymmetric)
+pca2 <- gm.prcomp(res.bilat$asymm.shape)
+summary(pca2)
+
+# plot pca2 (asymmetric)
+pc.plot2 <- plot(pca2, 
+                 asp = 1,
+                 pch = pch.gps.time,
+                 col = col.gps.time)
+                    shapeHulls(pc.plot2, 
+                             groups = qdata$time,
+                             group.cols = col.hull)
+```
+
+## Define models
+
+A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. To assess whether shape changes with size (allometry), and differs by group (region), Procrustes ANOVAs [@RN1749] were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. 
+
+_Hypothesis 1: There is a difference in the symmetric shape of Caddo bottles through time._
+
+```{r def.mod.1.asymm, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# symmetric shape as a function of time
+fit.time <- procD.lm(shape ~ time,
+                     data = gdf,
+                     print.progress = FALSE,
+                     iter = 9999)
+
+# asymmetric shape as a function of time
+fit.time.asymm <- procD.lm(ashape ~ time,
+                           data = gdf,
+                           print.progress = FALSE,
+                           iter = 9999)
+```
+
+_Hypothesis 2: There is a difference in the symmetric shape of Caddo bottles by community of practice._
+
+```{r def.mod.2.asymm, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# symmetric shape as a function of geography
+fit.geo <- procD.lm(shape ~ geo,
+                     data = gdf,
+                     print.progress = FALSE,
+                     iter = 9999)
+
+# asymmetric shape as a function of geography
+fit.geo.asymm <- procD.lm(ashape ~ geo,
+                           data = gdf,
+                           print.progress = FALSE,
+                           iter = 9999)
+```
+
+## Procrustes ANOVA (H1)
+
+```{r h1 asymm, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# ANOVA: do symmetric Caddo bottle shapes differ by time?
+## potential differences in design intent?
+anova(fit.time)
+
+# ANOVA: do asymmetric Caddo bottle shapes differ by time?
+## potential differences in design intent?
+anova(fit.time.asymm)
+```
+
+## Procrustes ANOVA (H2)
+
+```{r h2 asymm, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# ANOVA: do symmetric Caddo bottle shapes differ by geography?
+## potential differences in skill?
+anova(fit.geo)
+
+# ANOVA: do asymmetric Caddo bottle shapes differ by geography?
+## potential difference in skill?
+anova(fit.geo.asymm)
+
+# end of code
+```

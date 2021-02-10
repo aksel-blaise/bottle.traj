@@ -19,3 +19,10 @@ principal-components-analysis-1
 procrustes-anova
 mean-shapes
 trajectory-analysis
+caddo-bottle-asymmetry
+load-packages-data-1
+generalised-procrustes-analysis-1
+principal-components-analysis-2
+define-models-1
+procrustes-anova-h1
+procrustes-anova-h2

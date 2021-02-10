@@ -13,7 +13,7 @@ LaSEC conducts the following procedure [@RN28913, 4-5]:
 
 ## Analysis of experimental sample
 
-```{r, load.lasec.package.traj, echo=TRUE, eval=FALSE}
+```{r, load.lasec.package.traj, echo=TRUE}
 # load package
 #devtools::install_github("akiopteryx/lambda")
 library(here)
