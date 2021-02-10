@@ -1,5 +1,12 @@
 # Analysis of Caddo bottle morphology
 
+## Spatial
+
+```{r map, echo=TRUE}
+knitr::include_graphics('./images/fig.map.jpg')
+```
+
+
 ## Load packages + data
 
 ```{r load.data, echo = TRUE}
