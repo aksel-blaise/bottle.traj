@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="landmark-sampling-evaluation-curve-lasec" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Landmark Sampling Evaluation Curve (LaSEC)</h1>
-<p>The landmarking configuration used to analyse Caddo bottles was further scrutinised using the Landmark Sampling Error Curve, or <code>LaSEC</code> included in the <code>LaMBDA</code> package, as a means of assessing the fidelity of morphological characterisation by landmarks <span class="citation">(<a href="references.html#ref-RN28913" role="doc-biblioref">Watanabe 2018</a>)</span>, and was run after landmarking the first 20 samples</p>
+<p>The landmarking configuration used to analyse Caddo bottles was further scrutinised using the Landmark Sampling Error Curve, or <code>LaSEC</code> included in the <code>LaMBDA</code> package, as a means of assessing the fidelity of morphological characterisation by landmarks <span class="citation">(<a href="references.html#ref-RN28913" role="doc-biblioref">Watanabe 2018</a>)</span>, and was run after landmarking the entirety of the sample.</p>
 <p>LaSEC conducts the following procedure <span class="citation">(<a href="references.html#ref-RN28913" role="doc-biblioref">Watanabe 2018, 4–5</a>)</span>:</p>
 <ol style="list-style-type: decimal">
 <li>As is typical for extracting shape data, perform a generalized Procrustes alignment (<code>gpagen</code> function in the <code>geomorph</code> package) on a coordinate dataset (argument <code>coord.data</code>) in 2-D or 3-D (argument <code>n.dim</code>) and record the resulting shape coordinates and centroid size. Here, the shape coordinates are projected onto tangent space because pairwise distances among corresponding datasets later in the analysis are based on Euclidean distances and most shape analyses in the biological literature are conducted in tangent space instead of Procrustes shape space.</li>
@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (#fig:fig.lasec.EX)Sampling curves from performing <code>LaSEC</code> on the dataset with respect to characterising shape variation. Each gray line indicates fit values from one iteration of subsampling. Thick, dark line denotes median fit value at each number of landmarks. <code>LaSEC</code> sampling curve for centroid size (left), and for shape (right). Results produced using the code above for this 3D dataset, using 1,000 iterations. <em>Images converted to PNG following export.</em>
 </p>
 </div>
-<p>Results demonstrate saltation, illustrating that some landmarks are critical for capturing shape information <span class="citation">(<a href="references.html#ref-RN28913" role="doc-biblioref">Watanabe 2018</a>)</span>. Dynamic as Caddo bottles may be in shape, that variation might be captured with a configuration of landmarks that employed fewer semilandmarks.</p>
+<p>Results demonstrate saltation, meaning that some landmarks are critical for capturing shape information <span class="citation">(<a href="references.html#ref-RN28913" role="doc-biblioref">Watanabe 2018</a>)</span>. Dynamic as Caddo bottles may be, that variation might be captured with a configuration of landmarks that employed fewer semilandmarks.</p>
 
 </div>
 </div>

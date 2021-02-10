@@ -1,6 +1,6 @@
 # Landmark Sampling Evaluation Curve (LaSEC)
 
-The landmarking configuration used to analyse Caddo bottles was further scrutinised using the Landmark Sampling Error Curve, or `LaSEC` included in the `LaMBDA` package, as a means of assessing the fidelity of morphological characterisation by landmarks [@RN28913], and was run after landmarking the first 20 samples
+The landmarking configuration used to analyse Caddo bottles was further scrutinised using the Landmark Sampling Error Curve, or `LaSEC` included in the `LaMBDA` package, as a means of assessing the fidelity of morphological characterisation by landmarks [@RN28913], and was run after landmarking the entirety of the sample.
 
 LaSEC conducts the following procedure [@RN28913, 4-5]:
 
@@ -40,4 +40,4 @@ Results demonstrate that nine landmarks are necessary to achieve a median fit va
 knitr::include_graphics('images/lasec.png')
 ```
 
-Results demonstrate saltation, illustrating that some landmarks are critical for capturing shape information [@RN28913]. Dynamic as Caddo bottles may be in shape, that variation might be captured with a configuration of landmarks that employed fewer semilandmarks.
+Results demonstrate saltation, meaning that some landmarks are critical for capturing shape information [@RN28913]. Dynamic as Caddo bottles may be, that variation might be captured with a configuration of landmarks that employed fewer semilandmarks.

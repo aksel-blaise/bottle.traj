@@ -101,7 +101,7 @@ _Hypothesis: Formative/Early and Late/Historic Caddo bottles found north and sou
 
 ### Boxplot
 
-```{r box1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap = "Boxplot of centroid size by ."}
+```{r box1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap = "Boxplot of centroid size by spatial/temporal unit."}
 # attributes for boxplot
 csz <- qdata$csz # centroid size
 comb <-  qdata$comb # comb + time
