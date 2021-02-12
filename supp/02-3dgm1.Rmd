@@ -38,10 +38,7 @@ Y.gpa <- gpagen(coords,
                 Proj = TRUE, 
                 print.progress = FALSE)
 
-# output + consensus configuration coords
-Y.gpa
-
-# combmorph data frame
+# geomorph data frame
 gdf <- geomorph.data.frame(shape = Y.gpa$coords, 
                            size = Y.gpa$Csize,
                            geo = qdata$geo,
@@ -63,6 +60,25 @@ knitr::kable(qdata,
              caption = "Modified attributes included in qdata.")
 ```
 
+### Boxplot
+
+```{r box1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap = "Boxplot of centroid size by spatial/temporal unit."}
+# attributes for boxplot
+csz <- qdata$csz # centroid size
+comb <-  qdata$comb # comb + time
+
+# boxplot of Caddo bottle centroid size by comb (north/south)
+csz.comb <- ggplot(qdata, aes(x = comb, y = csz, color = comb)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.3) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'North/South + Formative/Early or Late/Historic?', y = 'Centroid Size')
+
+# render plot
+csz.comb
+```
+
 ## Principal Components Analysis
 
 Principal components analysis [@RN1746] was used to visualise shape variation among the bottles. The shape changes described by each principal axis are commonly visualised using thin-plate spline warping of a reference 3D mesh [@RN1731;@RN479]. 
@@ -71,6 +87,23 @@ Principal components analysis [@RN1746] was used to visualise shape variation am
 # principal components analysis
 pca<-gm.prcomp(Y.gpa$coords)
 summary(pca)
+
+# set plot parameters
+pch.gps.comb <- c(15:18)[as.factor(comb)]
+col.gps.comb <- wes_palette("Moonrise2")[as.factor(comb)]
+col.hull <- c("#C27D38","#798E87","#29211F","#CCC591")
+
+# plot pca by comb
+pc.plot <- plot(pca, 
+                 asp = 1,
+                 pch = pch.gps.comb,
+                 col = col.gps.comb)
+                    shapeHulls(pc.plot, 
+                             groups = comb,
+                             group.cols = col.hull)
+
+# pca warp                   
+knitr::include_graphics('images/pca-warp.jpg')
 ```
 
 ## Define models
@@ -120,46 +153,6 @@ fit.shape <- procD.lm(shape ~ geo * time,
 ## Test Hypothesis
 
 _Hypothesis: Formative/Early and Late/Historic Caddo bottles found north and south of the shape boundary express unique patterns of shape change._
-
-### Boxplot
-
-```{r box1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap = "Boxplot of centroid size by spatial/temporal unit."}
-# attributes for boxplot
-csz <- qdata$csz # centroid size
-comb <-  qdata$comb # comb + time
-
-# boxplot of Caddo bottle centroid size by comb (north/south)
-csz.comb <- ggplot(qdata, aes(x = comb, y = csz, color = comb)) + 
-  geom_boxplot() +
-  geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.3) +
-  scale_colour_manual(values = wes_palette("Moonrise2")) +
-  theme(legend.position = "none") +
-  labs(x = 'North/South + Formative/Early or Late/Historic?', y = 'Centroid Size')
-
-# render plot
-csz.comb
-```
-
-### Principal Components Analysis
-
-```{r pca1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# set plot parameters
-pch.gps.comb <- c(15:18)[as.factor(comb)]
-col.gps.comb <- wes_palette("Moonrise2")[as.factor(comb)]
-col.hull <- c("#C27D38","#798E87","#CCC591","#29211F")
-
-# plot pca by comb
-pc.plot <- plot(pca, 
-                 asp = 1,
-                 pch = pch.gps.comb,
-                 col = col.gps.comb)
-                    shapeHulls(pc.plot, 
-                             groups = comb,
-                             group.cols = col.hull)
-
-# pca warp                   
-knitr::include_graphics('images/pca-warp.jpg')
-```
 
 ### Procrustes ANOVA
 
