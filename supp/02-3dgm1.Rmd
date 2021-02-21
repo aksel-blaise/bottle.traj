@@ -101,10 +101,13 @@ pc.plot <- plot(pca,
                     shapeHulls(pc.plot, 
                              groups = comb,
                              group.cols = col.hull)
+```
 
+```{r pca.warp, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap="Results of PCA summarising shape variation in the aggregated sample; gray, north-formative/early; orange, north-late/historic; brown, south-formative/early; and black, south-late/historic; with mean shapes (gray) contrasted with max/min shapes (black)."}
 # pca warp                   
 knitr::include_graphics('images/pca-warp.jpg')
 ```
+
 
 ## Define models
 

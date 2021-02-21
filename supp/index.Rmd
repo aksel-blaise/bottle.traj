@@ -26,7 +26,7 @@ knitr::include_graphics('./images/fig.map.jpg')
 
 * Caddo bottle size **does not differ** significantly by geography, but **differs** significantly by time
 * Caddo bottle shape **differs** significantly by geography and time
-* Patterns of bottle shape in the northern and southern Caddo communities of practice **differ** significantly
+* Caddo bottle shape trajectories **differ** significantly through time for the northern and southern Caddo communities of practice
 
 ## Acknowledgments
 
