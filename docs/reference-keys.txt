@@ -1,5 +1,6 @@
 tab:gpa
 fig:box1
+basis-of-inquiry
 primary-findings
 acknowledgments
 funding
@@ -16,10 +17,3 @@ test-hypothesis
 procrustes-anova
 mean-shapes
 trajectory-analysis
-caddo-bottle-asymmetry
-load-packages-data-1
-generalised-procrustes-analysis-1
-principal-components-analysis-1
-define-models-1
-hypothesis
-procrustes-anova-1

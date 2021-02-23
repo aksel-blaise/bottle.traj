@@ -1,5 +1,5 @@
 --- 
-title: "Patterns of shape change for Caddo bottles recovered from the southern Caddo area"
+title: "Which way toward the maker? Patterns of shape change for Caddo bottles recovered from the southern Caddo area"
 author: "Robert Z. Selden, Jr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -14,7 +14,21 @@ description: "Morphological analysis of Caddo bottles."
 
 >Reproducibility---the ability to recompute results---and replicability---the chances other experimenters will achieve a consistent result---are two foundational characteristics of successful scientific research [@RN20918].
 
-This volume is written using _Markdown_, and includes all analysis code employed in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in the following chapters. The replicable nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. Diagnostic types---whether functional, decorative, morphological, or chronological [@RN20847]---are of considerable import in formulating archaeological interpretations. Morphological differences between the northern and southern Caddo bottle shapes have been the topic of recent studies [@RN8074;@RN7927;@RN8370;@RN8312], and geographical (north-south) differences occur across the same shape boundary for Gahagan bifaces [@RN11783;@RN8322] as well as [Perdiz arrow points](https://aksel-blaise.github.io/perdiz2/). 
+This volume is written using _Markdown_, and includes all analysis code employed in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in the following chapters. The replicable nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge.
+
+## Basis of inquiry
+
+In a June 18, 1937 WPA interview with Lillian Cassaway, Sadie Bedoka---a Caddo-Delaware woman who was raised wth the Caddoes---states that:
+
+>Each [Caddo] clan had its own shape to make its pottery. One [Caddo] clan never thought of making anything the same pattern of another clan. **_You could tell who made the pottery by the shape_** [@RN9357x, 395].
+
+Diagnostic types---whether `functional`, `decorative`, `morphological`, or `chronological` [@RN20847]---are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based upon decorative motifs, and not morphology [@RN5769;@RN7795]. Morphological differences between the northern and southern Caddo bottle shapes have been the topic of recent studies [@RN8074;@RN7927;@RN8370;@RN8312], and geographical (north-south) differences occur across the same shape boundary for Gahagan bifaces [@RN11783;@RN8322] as well as [Perdiz arrow points](https://aksel-blaise.github.io/perdiz2/). 
+
+In the analyses of Caddo bottle morphology [@RN8074;@RN7927;@RN8370;@RN8312], vessels of the same `decorative type` were found to differ in morphology across north-south geography. It is not known whether the same Caddo maker that crafted a vessel's shape also applied the decorative elements; however, if the maker is also assumed to be the decorator, then it may be the case that Caddo vessel shapes and decorative elements incorporate distinct cultural signals, perhaps akin to the _autogenous_ and _adherent_ signals proposed by Kubler [-@RN8105].
+
+The analysis builds directly upon those insights provided by Sadie Bedoka, adding a temporal component to assess whether (general) Caddo bottle shapes from the northern and southern Caddo communities of practice differ through time. A recent analysis of [French trade axes](https://github.com/aksel-blaise/fta3dgm/blob/main/fta2dgm.md) successfully identified the morphological idiosyncracies of French blacksmiths, and a current study of [Caddo ceramic incision morphology](https://aksel-blaise.github.io/incision/) is extending the reach of morphological studies by asking if it may be possible to identify whether Caddo makers used a standard tool (or toolkit) to apply the diverse decorative motifs that adorn Caddo ceramics.
+
+This exploratory study enlists a novel, and replicable, 3D landmarking protocol that provides a means of further parsing Caddo bottles into discrete components (i.e., rim, neck, body, and base). If the hypothesis is supported, subsequent analyses will be run to identify which morphological component---or suite of components---are driving the pattern.
 
 _The goal of this endeavour is to assess shape change through time for Caddo bottles found in the geographies of the northern and southern Caddo communities of practice, as defined in a recent exploratory network analysis [@RN8031]._
 
