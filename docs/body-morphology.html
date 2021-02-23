@@ -144,6 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.3</b> Acknowledgments</a></li>
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i><b>0.4</b> Funding</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#data-management"><i class="fa fa-check"></i><b>0.5</b> Data management</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#colophon"><i class="fa fa-check"></i><b>0.6</b> Colophon</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="landmarking-protocol.html"><a href="landmarking-protocol.html"><i class="fa fa-check"></i><b>1</b> Landmarking Protocol</a></li>
 <li class="chapter" data-level="2" data-path="whole-bottle-morphology.html"><a href="whole-bottle-morphology.html"><i class="fa fa-check"></i><b>2</b> Whole bottle morphology</a>
@@ -266,63 +267,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> Body morphology</h1>
 <div id="load-packages-data-3" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Load packages + data</h2>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="body-morphology.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb96-2"><a href="body-morphology.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;combmorphR/combmorph&quot;, ref = &quot;Stable&quot;, build_vignettes = TRUE)</span></span>
-<span id="cb96-3"><a href="body-morphology.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb96-4"><a href="body-morphology.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomorph)</span>
-<span id="cb96-5"><a href="body-morphology.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb96-6"><a href="body-morphology.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
-<span id="cb96-7"><a href="body-morphology.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="body-morphology.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read GM data</span></span>
-<span id="cb96-9"><a href="body-morphology.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;readmulti.csv.R&#39;</span>)</span>
-<span id="cb96-10"><a href="body-morphology.html#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./data&quot;</span>)</span>
-<span id="cb96-11"><a href="body-morphology.html#cb96-11" aria-hidden="true" tabindex="-1"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb96-12"><a href="body-morphology.html#cb96-12" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">readmulti.csv</span>(filelist)</span>
-<span id="cb96-13"><a href="body-morphology.html#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span>
-<span id="cb96-14"><a href="body-morphology.html#cb96-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-15"><a href="body-morphology.html#cb96-15" aria-hidden="true" tabindex="-1"></a><span class="co"># read qualitative data</span></span>
-<span id="cb96-16"><a href="body-morphology.html#cb96-16" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;qdata.csv&quot;</span>, </span>
-<span id="cb96-17"><a href="body-morphology.html#cb96-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb96-18"><a href="body-morphology.html#cb96-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb96-19"><a href="body-morphology.html#cb96-19" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> qdata[<span class="fu">match</span>(<span class="fu">dimnames</span>(coords)[[<span class="dv">3</span>]],</span>
-<span id="cb96-20"><a href="body-morphology.html#cb96-20" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">rownames</span>(qdata)),]</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="body-morphology.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb91-2"><a href="body-morphology.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;combmorphR/combmorph&quot;, ref = &quot;Stable&quot;, build_vignettes = TRUE)</span></span>
+<span id="cb91-3"><a href="body-morphology.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb91-4"><a href="body-morphology.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomorph)</span>
+<span id="cb91-5"><a href="body-morphology.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb91-6"><a href="body-morphology.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
+<span id="cb91-7"><a href="body-morphology.html#cb91-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="body-morphology.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read GM data</span></span>
+<span id="cb91-9"><a href="body-morphology.html#cb91-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;readmulti.csv.R&#39;</span>)</span>
+<span id="cb91-10"><a href="body-morphology.html#cb91-10" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;./data&quot;</span>)</span>
+<span id="cb91-11"><a href="body-morphology.html#cb91-11" aria-hidden="true" tabindex="-1"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb91-12"><a href="body-morphology.html#cb91-12" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">readmulti.csv</span>(filelist)</span>
+<span id="cb91-13"><a href="body-morphology.html#cb91-13" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;../&quot;</span>)</span>
+<span id="cb91-14"><a href="body-morphology.html#cb91-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-15"><a href="body-morphology.html#cb91-15" aria-hidden="true" tabindex="-1"></a><span class="co"># read qualitative data</span></span>
+<span id="cb91-16"><a href="body-morphology.html#cb91-16" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;qdata.csv&quot;</span>, </span>
+<span id="cb91-17"><a href="body-morphology.html#cb91-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb91-18"><a href="body-morphology.html#cb91-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb91-19"><a href="body-morphology.html#cb91-19" aria-hidden="true" tabindex="-1"></a>qdata <span class="ot">&lt;-</span> qdata[<span class="fu">match</span>(<span class="fu">dimnames</span>(coords)[[<span class="dv">3</span>]],</span>
+<span id="cb91-20"><a href="body-morphology.html#cb91-20" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">rownames</span>(qdata)),]</span></code></pre></div>
 </div>
 <div id="generalised-procrustes-analysis-3" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Generalised Procrustes Analysis</h2>
 <p>Landmark data were aligned to a global coordinate system <span class="citation">(<a href="references.html#ref-RN11622" role="doc-biblioref">Kendall 1981</a>, <a href="references.html#ref-RN11623" role="doc-biblioref">1984</a>; <a href="references.html#ref-RN11563" role="doc-biblioref">Slice 2001</a>)</span>, achieved through generalised Procrustes superimposition <span class="citation">(<a href="references.html#ref-RN478" role="doc-biblioref">Rohlf and Slice 1990</a>)</span> performed in R 4.0.3 <span class="citation">(<a href="references.html#ref-R" role="doc-biblioref">R Core Development Team, 2020</a>)</span> using the <code>geomorph</code> library v. 3.3.2 <span class="citation">(<a href="references.html#ref-RN11530" role="doc-biblioref">Adams et al. 2017</a>; <a href="references.html#ref-RN1774" role="doc-biblioref">Adams and Otárola-Castillo 2013</a>)</span>. Procrustes superimposition translates, scales, and rotates the coordinate data to allow for comparisons among objects <span class="citation">(<a href="references.html#ref-RN11564" role="doc-biblioref">Gower 1975</a>; <a href="references.html#ref-RN478" role="doc-biblioref">Rohlf and Slice 1990</a>)</span>. The <code>geomorph</code> package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space <span class="citation">(<a href="references.html#ref-RN1646" role="doc-biblioref">Rohlf 1999</a>; <a href="references.html#ref-RN11563" role="doc-biblioref">Slice 2001</a>)</span>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="body-morphology.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select landmarks from coords</span></span>
-<span id="cb97-2"><a href="body-morphology.html#cb97-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">32</span><span class="sc">:</span><span class="dv">41</span>)</span>
-<span id="cb97-3"><a href="body-morphology.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="body-morphology.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># new coords</span></span>
-<span id="cb97-5"><a href="body-morphology.html#cb97-5" aria-hidden="true" tabindex="-1"></a>bot.body <span class="ot">&lt;-</span> coords[x,,]</span>
-<span id="cb97-6"><a href="body-morphology.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-7"><a href="body-morphology.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa</span></span>
-<span id="cb97-8"><a href="body-morphology.html#cb97-8" aria-hidden="true" tabindex="-1"></a>Y.gpa <span class="ot">&lt;-</span> <span class="fu">gpagen</span>(bot.body, </span>
-<span id="cb97-9"><a href="body-morphology.html#cb97-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">PrinAxes =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb97-10"><a href="body-morphology.html#cb97-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">ProcD =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb97-11"><a href="body-morphology.html#cb97-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">Proj =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb97-12"><a href="body-morphology.html#cb97-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb97-13"><a href="body-morphology.html#cb97-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-14"><a href="body-morphology.html#cb97-14" aria-hidden="true" tabindex="-1"></a><span class="co"># geomorph data frame</span></span>
-<span id="cb97-15"><a href="body-morphology.html#cb97-15" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> <span class="fu">geomorph.data.frame</span>(<span class="at">shape =</span> Y.gpa<span class="sc">$</span>coords, </span>
-<span id="cb97-16"><a href="body-morphology.html#cb97-16" aria-hidden="true" tabindex="-1"></a>                           <span class="at">size =</span> Y.gpa<span class="sc">$</span>Csize,</span>
-<span id="cb97-17"><a href="body-morphology.html#cb97-17" aria-hidden="true" tabindex="-1"></a>                           <span class="at">geo =</span> qdata<span class="sc">$</span>geo,</span>
-<span id="cb97-18"><a href="body-morphology.html#cb97-18" aria-hidden="true" tabindex="-1"></a>                           <span class="at">time =</span> qdata<span class="sc">$</span>time,</span>
-<span id="cb97-19"><a href="body-morphology.html#cb97-19" aria-hidden="true" tabindex="-1"></a>                           <span class="at">comb =</span> qdata<span class="sc">$</span>comb)</span>
-<span id="cb97-20"><a href="body-morphology.html#cb97-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-21"><a href="body-morphology.html#cb97-21" aria-hidden="true" tabindex="-1"></a><span class="co"># render 3d gpa plot</span></span>
-<span id="cb97-22"><a href="body-morphology.html#cb97-22" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(Y.gpa)</span></span>
-<span id="cb97-23"><a href="body-morphology.html#cb97-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-24"><a href="body-morphology.html#cb97-24" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa plot</span></span>
-<span id="cb97-25"><a href="body-morphology.html#cb97-25" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/gpa3d.png&#39;)</span></span>
-<span id="cb97-26"><a href="body-morphology.html#cb97-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-27"><a href="body-morphology.html#cb97-27" aria-hidden="true" tabindex="-1"></a><span class="co"># add body centroid size to qdata</span></span>
-<span id="cb97-28"><a href="body-morphology.html#cb97-28" aria-hidden="true" tabindex="-1"></a>qdata<span class="sc">$</span>csz <span class="ot">&lt;-</span> Y.gpa<span class="sc">$</span>Csize</span>
-<span id="cb97-29"><a href="body-morphology.html#cb97-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-30"><a href="body-morphology.html#cb97-30" aria-hidden="true" tabindex="-1"></a><span class="co"># print updated qdata with body centroid size</span></span>
-<span id="cb97-31"><a href="body-morphology.html#cb97-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(qdata, </span>
-<span id="cb97-32"><a href="body-morphology.html#cb97-32" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;lccccc&quot;</span>, </span>
-<span id="cb97-33"><a href="body-morphology.html#cb97-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Modified attributes included in qdata.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="body-morphology.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select landmarks from coords</span></span>
+<span id="cb92-2"><a href="body-morphology.html#cb92-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">32</span><span class="sc">:</span><span class="dv">41</span>)</span>
+<span id="cb92-3"><a href="body-morphology.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="body-morphology.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co"># new coords</span></span>
+<span id="cb92-5"><a href="body-morphology.html#cb92-5" aria-hidden="true" tabindex="-1"></a>bot.body <span class="ot">&lt;-</span> coords[x,,]</span>
+<span id="cb92-6"><a href="body-morphology.html#cb92-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-7"><a href="body-morphology.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa</span></span>
+<span id="cb92-8"><a href="body-morphology.html#cb92-8" aria-hidden="true" tabindex="-1"></a>Y.gpa <span class="ot">&lt;-</span> <span class="fu">gpagen</span>(bot.body, </span>
+<span id="cb92-9"><a href="body-morphology.html#cb92-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">PrinAxes =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb92-10"><a href="body-morphology.html#cb92-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">ProcD =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb92-11"><a href="body-morphology.html#cb92-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">Proj =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb92-12"><a href="body-morphology.html#cb92-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb92-13"><a href="body-morphology.html#cb92-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-14"><a href="body-morphology.html#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="co"># geomorph data frame</span></span>
+<span id="cb92-15"><a href="body-morphology.html#cb92-15" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> <span class="fu">geomorph.data.frame</span>(<span class="at">shape =</span> Y.gpa<span class="sc">$</span>coords, </span>
+<span id="cb92-16"><a href="body-morphology.html#cb92-16" aria-hidden="true" tabindex="-1"></a>                           <span class="at">size =</span> Y.gpa<span class="sc">$</span>Csize,</span>
+<span id="cb92-17"><a href="body-morphology.html#cb92-17" aria-hidden="true" tabindex="-1"></a>                           <span class="at">geo =</span> qdata<span class="sc">$</span>geo,</span>
+<span id="cb92-18"><a href="body-morphology.html#cb92-18" aria-hidden="true" tabindex="-1"></a>                           <span class="at">time =</span> qdata<span class="sc">$</span>time,</span>
+<span id="cb92-19"><a href="body-morphology.html#cb92-19" aria-hidden="true" tabindex="-1"></a>                           <span class="at">comb =</span> qdata<span class="sc">$</span>comb)</span>
+<span id="cb92-20"><a href="body-morphology.html#cb92-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-21"><a href="body-morphology.html#cb92-21" aria-hidden="true" tabindex="-1"></a><span class="co"># render 3d gpa plot</span></span>
+<span id="cb92-22"><a href="body-morphology.html#cb92-22" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(Y.gpa)</span></span>
+<span id="cb92-23"><a href="body-morphology.html#cb92-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-24"><a href="body-morphology.html#cb92-24" aria-hidden="true" tabindex="-1"></a><span class="co"># gpa plot</span></span>
+<span id="cb92-25"><a href="body-morphology.html#cb92-25" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/gpa3d.png&#39;)</span></span>
+<span id="cb92-26"><a href="body-morphology.html#cb92-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-27"><a href="body-morphology.html#cb92-27" aria-hidden="true" tabindex="-1"></a><span class="co"># add body centroid size to qdata</span></span>
+<span id="cb92-28"><a href="body-morphology.html#cb92-28" aria-hidden="true" tabindex="-1"></a>qdata<span class="sc">$</span>csz <span class="ot">&lt;-</span> Y.gpa<span class="sc">$</span>Csize</span>
+<span id="cb92-29"><a href="body-morphology.html#cb92-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-30"><a href="body-morphology.html#cb92-30" aria-hidden="true" tabindex="-1"></a><span class="co"># print updated qdata with body centroid size</span></span>
+<span id="cb92-31"><a href="body-morphology.html#cb92-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(qdata, </span>
+<span id="cb92-32"><a href="body-morphology.html#cb92-32" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;lccccc&quot;</span>, </span>
+<span id="cb92-33"><a href="body-morphology.html#cb92-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Modified attributes included in qdata.&quot;</span>)</span></code></pre></div>
 <table style="width:100%;">
 <caption>(#tab:gpa.body)Modified attributes included in qdata.</caption>
 <colgroup>
@@ -1196,20 +1197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div id="boxplot-3" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Boxplot</h3>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="body-morphology.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes for boxplot</span></span>
-<span id="cb98-2"><a href="body-morphology.html#cb98-2" aria-hidden="true" tabindex="-1"></a>csz <span class="ot">&lt;-</span> qdata<span class="sc">$</span>csz <span class="co"># centroid size</span></span>
-<span id="cb98-3"><a href="body-morphology.html#cb98-3" aria-hidden="true" tabindex="-1"></a>comb <span class="ot">&lt;-</span>  qdata<span class="sc">$</span>comb <span class="co"># comb + time</span></span>
-<span id="cb98-4"><a href="body-morphology.html#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-5"><a href="body-morphology.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot of Caddo bottle centroid size by comb (north/south)</span></span>
-<span id="cb98-6"><a href="body-morphology.html#cb98-6" aria-hidden="true" tabindex="-1"></a>csz.comb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qdata, <span class="fu">aes</span>(<span class="at">x =</span> comb, <span class="at">y =</span> csz, <span class="at">color =</span> comb)) <span class="sc">+</span> </span>
-<span id="cb98-7"><a href="body-morphology.html#cb98-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb98-8"><a href="body-morphology.html#cb98-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&#39;y&#39;</span>, <span class="at">stackdir =</span> <span class="st">&#39;center&#39;</span>, <span class="at">dotsize =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb98-9"><a href="body-morphology.html#cb98-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb98-10"><a href="body-morphology.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb98-11"><a href="body-morphology.html#cb98-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;North/South + Formative/Early or Late/Historic?&#39;</span>, <span class="at">y =</span> <span class="st">&#39;Body Centroid Size&#39;</span>)</span>
-<span id="cb98-12"><a href="body-morphology.html#cb98-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-13"><a href="body-morphology.html#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co"># render plot</span></span>
-<span id="cb98-14"><a href="body-morphology.html#cb98-14" aria-hidden="true" tabindex="-1"></a>csz.comb</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="body-morphology.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes for boxplot</span></span>
+<span id="cb93-2"><a href="body-morphology.html#cb93-2" aria-hidden="true" tabindex="-1"></a>csz <span class="ot">&lt;-</span> qdata<span class="sc">$</span>csz <span class="co"># centroid size</span></span>
+<span id="cb93-3"><a href="body-morphology.html#cb93-3" aria-hidden="true" tabindex="-1"></a>comb <span class="ot">&lt;-</span>  qdata<span class="sc">$</span>comb <span class="co"># comb + time</span></span>
+<span id="cb93-4"><a href="body-morphology.html#cb93-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="body-morphology.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot of Caddo bottle centroid size by comb (north/south)</span></span>
+<span id="cb93-6"><a href="body-morphology.html#cb93-6" aria-hidden="true" tabindex="-1"></a>csz.comb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qdata, <span class="fu">aes</span>(<span class="at">x =</span> comb, <span class="at">y =</span> csz, <span class="at">color =</span> comb)) <span class="sc">+</span> </span>
+<span id="cb93-7"><a href="body-morphology.html#cb93-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb93-8"><a href="body-morphology.html#cb93-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&#39;y&#39;</span>, <span class="at">stackdir =</span> <span class="st">&#39;center&#39;</span>, <span class="at">dotsize =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb93-9"><a href="body-morphology.html#cb93-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb93-10"><a href="body-morphology.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb93-11"><a href="body-morphology.html#cb93-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;North/South + Formative/Early or Late/Historic?&#39;</span>, <span class="at">y =</span> <span class="st">&#39;Body Centroid Size&#39;</span>)</span>
+<span id="cb93-12"><a href="body-morphology.html#cb93-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-13"><a href="body-morphology.html#cb93-13" aria-hidden="true" tabindex="-1"></a><span class="co"># render plot</span></span>
+<span id="cb93-14"><a href="body-morphology.html#cb93-14" aria-hidden="true" tabindex="-1"></a>csz.comb</span></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure">
 <img src="supp_files/figure-html/box1.body-1.png" alt="Boxplot of centroid size by spatial/temporal unit." width="100%" />
@@ -1222,9 +1223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="principal-components-analysis-3" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Principal Components Analysis</h2>
 <p>Principal components analysis <span class="citation">(<a href="references.html#ref-RN1746" role="doc-biblioref">Jolliffe 2002</a>)</span> was used to visualise body shape variation. The shape changes described by each principal axis are commonly visualised using thin-plate spline warping of a reference 3D mesh <span class="citation">(<a href="references.html#ref-RN1731" role="doc-biblioref">Klingenberg 2013</a>; <a href="references.html#ref-RN479" role="doc-biblioref">Sherratt et al. 2014</a>)</span>.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="body-morphology.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis</span></span>
-<span id="cb100-2"><a href="body-morphology.html#cb100-2" aria-hidden="true" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">gm.prcomp</span>(Y.gpa<span class="sc">$</span>coords)</span>
-<span id="cb100-3"><a href="body-morphology.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="body-morphology.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># principal components analysis</span></span>
+<span id="cb95-2"><a href="body-morphology.html#cb95-2" aria-hidden="true" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">gm.prcomp</span>(Y.gpa<span class="sc">$</span>coords)</span>
+<span id="cb95-3"><a href="body-morphology.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code></pre></div>
 <pre><code>## 
 ## Ordination type: Principal Component Analysis 
 ## Centering by OLS mean
@@ -1257,63 +1258,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Eigenvalues            2.099047e-34 1.323769e-34 3.167613e-35 2.004294e-35
 ## Proportion of Variance 1.720044e-32 1.084749e-32 2.595670e-33 1.642399e-33
 ## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="body-morphology.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
-<span id="cb102-2"><a href="body-morphology.html#cb102-2" aria-hidden="true" tabindex="-1"></a>pch.gps.comb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">18</span>)[<span class="fu">as.factor</span>(comb)]</span>
-<span id="cb102-3"><a href="body-morphology.html#cb102-3" aria-hidden="true" tabindex="-1"></a>col.gps.comb <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(comb)]</span>
-<span id="cb102-4"><a href="body-morphology.html#cb102-4" aria-hidden="true" tabindex="-1"></a>col.hull <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#C27D38&quot;</span>,<span class="st">&quot;#798E87&quot;</span>,<span class="st">&quot;#29211F&quot;</span>,<span class="st">&quot;#CCC591&quot;</span>)</span>
-<span id="cb102-5"><a href="body-morphology.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="body-morphology.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca by comb</span></span>
-<span id="cb102-7"><a href="body-morphology.html#cb102-7" aria-hidden="true" tabindex="-1"></a>pc.plot <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca, </span>
-<span id="cb102-8"><a href="body-morphology.html#cb102-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
-<span id="cb102-9"><a href="body-morphology.html#cb102-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps.comb,</span>
-<span id="cb102-10"><a href="body-morphology.html#cb102-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps.comb)</span>
-<span id="cb102-11"><a href="body-morphology.html#cb102-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot, </span>
-<span id="cb102-12"><a href="body-morphology.html#cb102-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> comb,</span>
-<span id="cb102-13"><a href="body-morphology.html#cb102-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="body-morphology.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
+<span id="cb97-2"><a href="body-morphology.html#cb97-2" aria-hidden="true" tabindex="-1"></a>pch.gps.comb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">18</span>)[<span class="fu">as.factor</span>(comb)]</span>
+<span id="cb97-3"><a href="body-morphology.html#cb97-3" aria-hidden="true" tabindex="-1"></a>col.gps.comb <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(comb)]</span>
+<span id="cb97-4"><a href="body-morphology.html#cb97-4" aria-hidden="true" tabindex="-1"></a>col.hull <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#C27D38&quot;</span>,<span class="st">&quot;#798E87&quot;</span>,<span class="st">&quot;#29211F&quot;</span>,<span class="st">&quot;#CCC591&quot;</span>)</span>
+<span id="cb97-5"><a href="body-morphology.html#cb97-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-6"><a href="body-morphology.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca by comb</span></span>
+<span id="cb97-7"><a href="body-morphology.html#cb97-7" aria-hidden="true" tabindex="-1"></a>pc.plot <span class="ot">&lt;-</span> <span class="fu">plot</span>(pca, </span>
+<span id="cb97-8"><a href="body-morphology.html#cb97-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">asp =</span> <span class="dv">1</span>,</span>
+<span id="cb97-9"><a href="body-morphology.html#cb97-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pch =</span> pch.gps.comb,</span>
+<span id="cb97-10"><a href="body-morphology.html#cb97-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col =</span> col.gps.comb)</span>
+<span id="cb97-11"><a href="body-morphology.html#cb97-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">shapeHulls</span>(pc.plot, </span>
+<span id="cb97-12"><a href="body-morphology.html#cb97-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">groups =</span> comb,</span>
+<span id="cb97-13"><a href="body-morphology.html#cb97-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group.cols =</span> col.hull)</span></code></pre></div>
 <p><img src="supp_files/figure-html/pca.body-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="body-morphology.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pca warp                   </span></span>
-<span id="cb103-2"><a href="body-morphology.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/pca-warp.jpg&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="body-morphology.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pca warp                   </span></span>
+<span id="cb98-2"><a href="body-morphology.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/pca-warp.jpg&#39;)</span></span></code></pre></div>
 </div>
 <div id="define-models-3" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Define models</h2>
 <p>A residual randomisation permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs <span class="citation">(<a href="references.html#ref-RN1655" role="doc-biblioref">Adams and Collyer 2015</a>; <a href="references.html#ref-RN11775" role="doc-biblioref">Michael L. Collyer and Adams 2018</a>)</span>, which has higher statistical power and a greater ability to identify patterns in the data should they be present <span class="citation">(<a href="references.html#ref-RN1719" role="doc-biblioref">Anderson and Ter Braak 2003</a>)</span>. To assess whether shape changes differ by group (geography and time), Procrustes ANOVAs <span class="citation">(<a href="references.html#ref-RN1749" role="doc-biblioref">Goodall 1991</a>)</span> were also run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions <span class="citation">(<a href="references.html#ref-RN1756" role="doc-biblioref">M. L. Collyer, Sekora, and Adams 2015</a>)</span>.</p>
 <div id="size-and-shape-3" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Size and shape</h3>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="body-morphology.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
-<span id="cb104-2"><a href="body-morphology.html#cb104-2" aria-hidden="true" tabindex="-1"></a>fit.sz.geo <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> geo,</span>
-<span id="cb104-3"><a href="body-morphology.html#cb104-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-4"><a href="body-morphology.html#cb104-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-5"><a href="body-morphology.html#cb104-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb104-6"><a href="body-morphology.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-7"><a href="body-morphology.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
-<span id="cb104-8"><a href="body-morphology.html#cb104-8" aria-hidden="true" tabindex="-1"></a>fit.sz.time <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> time,</span>
-<span id="cb104-9"><a href="body-morphology.html#cb104-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-10"><a href="body-morphology.html#cb104-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-11"><a href="body-morphology.html#cb104-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb104-12"><a href="body-morphology.html#cb104-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-13"><a href="body-morphology.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
-<span id="cb104-14"><a href="body-morphology.html#cb104-14" aria-hidden="true" tabindex="-1"></a>fit.sh.geo <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo,</span>
-<span id="cb104-15"><a href="body-morphology.html#cb104-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-16"><a href="body-morphology.html#cb104-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-17"><a href="body-morphology.html#cb104-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb104-18"><a href="body-morphology.html#cb104-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-19"><a href="body-morphology.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
-<span id="cb104-20"><a href="body-morphology.html#cb104-20" aria-hidden="true" tabindex="-1"></a>fit.sh.time <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> time,</span>
-<span id="cb104-21"><a href="body-morphology.html#cb104-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-22"><a href="body-morphology.html#cb104-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-23"><a href="body-morphology.html#cb104-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb104-24"><a href="body-morphology.html#cb104-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-25"><a href="body-morphology.html#cb104-25" aria-hidden="true" tabindex="-1"></a><span class="co"># size.geo</span></span>
-<span id="cb104-26"><a href="body-morphology.html#cb104-26" aria-hidden="true" tabindex="-1"></a>fit.size <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
-<span id="cb104-27"><a href="body-morphology.html#cb104-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-28"><a href="body-morphology.html#cb104-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-29"><a href="body-morphology.html#cb104-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
-<span id="cb104-30"><a href="body-morphology.html#cb104-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-31"><a href="body-morphology.html#cb104-31" aria-hidden="true" tabindex="-1"></a><span class="co"># shape.geo</span></span>
-<span id="cb104-32"><a href="body-morphology.html#cb104-32" aria-hidden="true" tabindex="-1"></a>fit.shape <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
-<span id="cb104-33"><a href="body-morphology.html#cb104-33" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
-<span id="cb104-34"><a href="body-morphology.html#cb104-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb104-35"><a href="body-morphology.html#cb104-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="body-morphology.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
+<span id="cb99-2"><a href="body-morphology.html#cb99-2" aria-hidden="true" tabindex="-1"></a>fit.sz.geo <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> geo,</span>
+<span id="cb99-3"><a href="body-morphology.html#cb99-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-4"><a href="body-morphology.html#cb99-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-5"><a href="body-morphology.html#cb99-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb99-6"><a href="body-morphology.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="body-morphology.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
+<span id="cb99-8"><a href="body-morphology.html#cb99-8" aria-hidden="true" tabindex="-1"></a>fit.sz.time <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> time,</span>
+<span id="cb99-9"><a href="body-morphology.html#cb99-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-10"><a href="body-morphology.html#cb99-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-11"><a href="body-morphology.html#cb99-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb99-12"><a href="body-morphology.html#cb99-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-13"><a href="body-morphology.html#cb99-13" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
+<span id="cb99-14"><a href="body-morphology.html#cb99-14" aria-hidden="true" tabindex="-1"></a>fit.sh.geo <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo,</span>
+<span id="cb99-15"><a href="body-morphology.html#cb99-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-16"><a href="body-morphology.html#cb99-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-17"><a href="body-morphology.html#cb99-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb99-18"><a href="body-morphology.html#cb99-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-19"><a href="body-morphology.html#cb99-19" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
+<span id="cb99-20"><a href="body-morphology.html#cb99-20" aria-hidden="true" tabindex="-1"></a>fit.sh.time <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> time,</span>
+<span id="cb99-21"><a href="body-morphology.html#cb99-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-22"><a href="body-morphology.html#cb99-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-23"><a href="body-morphology.html#cb99-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb99-24"><a href="body-morphology.html#cb99-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-25"><a href="body-morphology.html#cb99-25" aria-hidden="true" tabindex="-1"></a><span class="co"># size.geo</span></span>
+<span id="cb99-26"><a href="body-morphology.html#cb99-26" aria-hidden="true" tabindex="-1"></a>fit.size <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(size <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
+<span id="cb99-27"><a href="body-morphology.html#cb99-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-28"><a href="body-morphology.html#cb99-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-29"><a href="body-morphology.html#cb99-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span>
+<span id="cb99-30"><a href="body-morphology.html#cb99-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-31"><a href="body-morphology.html#cb99-31" aria-hidden="true" tabindex="-1"></a><span class="co"># shape.geo</span></span>
+<span id="cb99-32"><a href="body-morphology.html#cb99-32" aria-hidden="true" tabindex="-1"></a>fit.shape <span class="ot">&lt;-</span> <span class="fu">procD.lm</span>(shape <span class="sc">~</span> geo <span class="sc">*</span> time,</span>
+<span id="cb99-33"><a href="body-morphology.html#cb99-33" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> gdf,</span>
+<span id="cb99-34"><a href="body-morphology.html#cb99-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">print.progress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb99-35"><a href="body-morphology.html#cb99-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">iter =</span> <span class="dv">9999</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="test-hypothesis-3" class="section level2" number="5.5">
@@ -1321,8 +1322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Hypothesis: The body of Formative/Early and Late/Historic Caddo bottles found north and south of the shape boundary express unique patterns of shape change.</em></p>
 <div id="procrustes-anova-3" class="section level3" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> Procrustes ANOVA</h3>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="body-morphology.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by geo?</span></span>
-<span id="cb105-2"><a href="body-morphology.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sz.geo)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="body-morphology.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by geo?</span></span>
+<span id="cb100-2"><a href="body-morphology.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sz.geo)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1339,8 +1340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: procD.lm(f1 = size ~ geo, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="body-morphology.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by time?</span></span>
-<span id="cb107-2"><a href="body-morphology.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sz.time)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="body-morphology.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by time?</span></span>
+<span id="cb102-2"><a href="body-morphology.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sz.time)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1355,8 +1356,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Total     93 480059                                     
 ## 
 ## Call: procD.lm(f1 = size ~ time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="body-morphology.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by geo?</span></span>
-<span id="cb109-2"><a href="body-morphology.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sh.geo)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="body-morphology.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by geo?</span></span>
+<span id="cb104-2"><a href="body-morphology.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sh.geo)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1373,8 +1374,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: procD.lm(f1 = shape ~ geo, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="body-morphology.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by time?</span></span>
-<span id="cb111-2"><a href="body-morphology.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sh.time)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="body-morphology.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by time?</span></span>
+<span id="cb106-2"><a href="body-morphology.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.sh.time)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1391,8 +1392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: procD.lm(f1 = shape ~ time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="body-morphology.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by geo + time?</span></span>
-<span id="cb113-2"><a href="body-morphology.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.size)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="body-morphology.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body sizes differ by geo + time?</span></span>
+<span id="cb108-2"><a href="body-morphology.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.size)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1411,8 +1412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: procD.lm(f1 = size ~ geo * time, iter = 9999, data = gdf, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="body-morphology.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by geo + time?</span></span>
-<span id="cb115-2"><a href="body-morphology.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.shape)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="body-morphology.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA: do Caddo bottle body shapes differ by geo + time?</span></span>
+<span id="cb110-2"><a href="body-morphology.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.shape)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1434,64 +1435,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="mean-shapes-3" class="section level3" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Mean Shapes</h3>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="body-morphology.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset landmark coordinates to produce mean shapes</span></span>
-<span id="cb117-2"><a href="body-morphology.html#cb117-2" aria-hidden="true" tabindex="-1"></a>new.coords<span class="ot">&lt;-</span><span class="fu">coords.subset</span>(<span class="at">A =</span> Y.gpa<span class="sc">$</span>coords, </span>
-<span id="cb117-3"><a href="body-morphology.html#cb117-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group =</span> qdata<span class="sc">$</span>comb)</span>
-<span id="cb117-4"><a href="body-morphology.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(new.coords)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="body-morphology.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset landmark coordinates to produce mean shapes</span></span>
+<span id="cb112-2"><a href="body-morphology.html#cb112-2" aria-hidden="true" tabindex="-1"></a>new.coords<span class="ot">&lt;-</span><span class="fu">coords.subset</span>(<span class="at">A =</span> Y.gpa<span class="sc">$</span>coords, </span>
+<span id="cb112-3"><a href="body-morphology.html#cb112-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group =</span> qdata<span class="sc">$</span>comb)</span>
+<span id="cb112-4"><a href="body-morphology.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(new.coords)</span></code></pre></div>
 <pre><code>## [1] &quot;north, formative early&quot; &quot;north, late historic&quot;   &quot;south, formative early&quot; &quot;south, late historic&quot;</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="body-morphology.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group shape means</span></span>
-<span id="cb119-2"><a href="body-morphology.html#cb119-2" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(new.coords, mshape)</span>
-<span id="cb119-3"><a href="body-morphology.html#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-4"><a href="body-morphology.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot mean shapes</span></span>
-<span id="cb119-5"><a href="body-morphology.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>)</span>
-<span id="cb119-6"><a href="body-morphology.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>)</span>
-<span id="cb119-7"><a href="body-morphology.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>)</span>
-<span id="cb119-8"><a href="body-morphology.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>)</span>
-<span id="cb119-9"><a href="body-morphology.html#cb119-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-10"><a href="body-morphology.html#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co"># comparison plots</span></span>
-<span id="cb119-11"><a href="body-morphology.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-12"><a href="body-morphology.html#cb119-12" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-13"><a href="body-morphology.html#cb119-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;points&quot;</span>),</span>
-<span id="cb119-14"><a href="body-morphology.html#cb119-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-15"><a href="body-morphology.html#cb119-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-16"><a href="body-morphology.html#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-17"><a href="body-morphology.html#cb119-17" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-18"><a href="body-morphology.html#cb119-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
-<span id="cb119-19"><a href="body-morphology.html#cb119-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-20"><a href="body-morphology.html#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-21"><a href="body-morphology.html#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-22"><a href="body-morphology.html#cb119-22" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-23"><a href="body-morphology.html#cb119-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
-<span id="cb119-24"><a href="body-morphology.html#cb119-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-25"><a href="body-morphology.html#cb119-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-26"><a href="body-morphology.html#cb119-26" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-27"><a href="body-morphology.html#cb119-27" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-28"><a href="body-morphology.html#cb119-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
-<span id="cb119-29"><a href="body-morphology.html#cb119-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-30"><a href="body-morphology.html#cb119-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-31"><a href="body-morphology.html#cb119-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-32"><a href="body-morphology.html#cb119-32" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-33"><a href="body-morphology.html#cb119-33" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
-<span id="cb119-34"><a href="body-morphology.html#cb119-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-35"><a href="body-morphology.html#cb119-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-36"><a href="body-morphology.html#cb119-36" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
-<span id="cb119-37"><a href="body-morphology.html#cb119-37" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
-<span id="cb119-38"><a href="body-morphology.html#cb119-38" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
-<span id="cb119-39"><a href="body-morphology.html#cb119-39" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
-<span id="cb119-40"><a href="body-morphology.html#cb119-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-41"><a href="body-morphology.html#cb119-41" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/comp.composite.jpg&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="body-morphology.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group shape means</span></span>
+<span id="cb114-2"><a href="body-morphology.html#cb114-2" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(new.coords, mshape)</span>
+<span id="cb114-3"><a href="body-morphology.html#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="body-morphology.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot mean shapes</span></span>
+<span id="cb114-5"><a href="body-morphology.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>)</span>
+<span id="cb114-6"><a href="body-morphology.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>)</span>
+<span id="cb114-7"><a href="body-morphology.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>)</span>
+<span id="cb114-8"><a href="body-morphology.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>)</span>
+<span id="cb114-9"><a href="body-morphology.html#cb114-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-10"><a href="body-morphology.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co"># comparison plots</span></span>
+<span id="cb114-11"><a href="body-morphology.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-12"><a href="body-morphology.html#cb114-12" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-13"><a href="body-morphology.html#cb114-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;points&quot;</span>),</span>
+<span id="cb114-14"><a href="body-morphology.html#cb114-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-15"><a href="body-morphology.html#cb114-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-16"><a href="body-morphology.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-17"><a href="body-morphology.html#cb114-17" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-18"><a href="body-morphology.html#cb114-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb114-19"><a href="body-morphology.html#cb114-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-20"><a href="body-morphology.html#cb114-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-21"><a href="body-morphology.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-22"><a href="body-morphology.html#cb114-22" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-23"><a href="body-morphology.html#cb114-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb114-24"><a href="body-morphology.html#cb114-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-25"><a href="body-morphology.html#cb114-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-26"><a href="body-morphology.html#cb114-26" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-27"><a href="body-morphology.html#cb114-27" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-28"><a href="body-morphology.html#cb114-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb114-29"><a href="body-morphology.html#cb114-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-30"><a href="body-morphology.html#cb114-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-31"><a href="body-morphology.html#cb114-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">north, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-32"><a href="body-morphology.html#cb114-32" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-33"><a href="body-morphology.html#cb114-33" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb114-34"><a href="body-morphology.html#cb114-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-35"><a href="body-morphology.html#cb114-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-36"><a href="body-morphology.html#cb114-36" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRefToTarget</span>(mean<span class="sc">$</span><span class="st">`</span><span class="at">south, formative early</span><span class="st">`</span>, </span>
+<span id="cb114-37"><a href="body-morphology.html#cb114-37" aria-hidden="true" tabindex="-1"></a>                mean<span class="sc">$</span><span class="st">`</span><span class="at">south, late historic</span><span class="st">`</span>, </span>
+<span id="cb114-38"><a href="body-morphology.html#cb114-38" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb114-39"><a href="body-morphology.html#cb114-39" aria-hidden="true" tabindex="-1"></a>                <span class="at">mag =</span> <span class="dv">1</span>)</span>
+<span id="cb114-40"><a href="body-morphology.html#cb114-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-41"><a href="body-morphology.html#cb114-41" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/comp.composite.jpg&#39;)</span></span></code></pre></div>
 </div>
 </div>
 <div id="trajectory-analysis-3" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Trajectory analysis</h2>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="body-morphology.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trajectory analysis::shape</span></span>
-<span id="cb120-2"><a href="body-morphology.html#cb120-2" aria-hidden="true" tabindex="-1"></a>TA <span class="ot">&lt;-</span> <span class="fu">trajectory.analysis</span>(fit.shape, </span>
-<span id="cb120-3"><a href="body-morphology.html#cb120-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">groups =</span> qdata<span class="sc">$</span>geo, </span>
-<span id="cb120-4"><a href="body-morphology.html#cb120-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">traj.pts =</span> qdata<span class="sc">$</span>time, </span>
-<span id="cb120-5"><a href="body-morphology.html#cb120-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb120-6"><a href="body-morphology.html#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-7"><a href="body-morphology.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co"># magnitude difference</span></span>
-<span id="cb120-8"><a href="body-morphology.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(TA, <span class="at">attribute =</span> <span class="st">&quot;MD&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="body-morphology.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trajectory analysis::shape</span></span>
+<span id="cb115-2"><a href="body-morphology.html#cb115-2" aria-hidden="true" tabindex="-1"></a>TA <span class="ot">&lt;-</span> <span class="fu">trajectory.analysis</span>(fit.shape, </span>
+<span id="cb115-3"><a href="body-morphology.html#cb115-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">groups =</span> qdata<span class="sc">$</span>geo, </span>
+<span id="cb115-4"><a href="body-morphology.html#cb115-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">traj.pts =</span> qdata<span class="sc">$</span>time, </span>
+<span id="cb115-5"><a href="body-morphology.html#cb115-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">print.progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb115-6"><a href="body-morphology.html#cb115-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-7"><a href="body-morphology.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co"># magnitude difference</span></span>
+<span id="cb115-8"><a href="body-morphology.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(TA, <span class="at">attribute =</span> <span class="st">&quot;MD&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Trajectory analysis
 ## 
@@ -1510,17 +1511,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Pairwise absolute differences in path distances, plus statistics
 ##                      d  UCL (95%)          Z Pr &gt; d
 ## north:south 0.00808043 0.04021043 -0.4824137 0.6849</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="body-morphology.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb122-2"><a href="body-morphology.html#cb122-2" aria-hidden="true" tabindex="-1"></a>TP <span class="ot">&lt;-</span> <span class="fu">plot</span>(TA, </span>
-<span id="cb122-3"><a href="body-morphology.html#cb122-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="fu">as.numeric</span>(qdata<span class="sc">$</span>geo), </span>
-<span id="cb122-4"><a href="body-morphology.html#cb122-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">bg =</span> <span class="fu">as.numeric</span>(qdata<span class="sc">$</span>time),</span>
-<span id="cb122-5"><a href="body-morphology.html#cb122-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
-<span id="cb122-6"><a href="body-morphology.html#cb122-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>)</span>
-<span id="cb122-7"><a href="body-morphology.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add.trajectories</span>(TP, <span class="at">traj.pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">19</span>),</span>
-<span id="cb122-8"><a href="body-morphology.html#cb122-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">start.bg =</span> <span class="dv">1</span>, </span>
-<span id="cb122-9"><a href="body-morphology.html#cb122-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end.bg =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="body-morphology.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb117-2"><a href="body-morphology.html#cb117-2" aria-hidden="true" tabindex="-1"></a>TP <span class="ot">&lt;-</span> <span class="fu">plot</span>(TA, </span>
+<span id="cb117-3"><a href="body-morphology.html#cb117-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="fu">as.numeric</span>(qdata<span class="sc">$</span>geo), </span>
+<span id="cb117-4"><a href="body-morphology.html#cb117-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">bg =</span> <span class="fu">as.numeric</span>(qdata<span class="sc">$</span>time),</span>
+<span id="cb117-5"><a href="body-morphology.html#cb117-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb117-6"><a href="body-morphology.html#cb117-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb117-7"><a href="body-morphology.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add.trajectories</span>(TP, <span class="at">traj.pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">19</span>),</span>
+<span id="cb117-8"><a href="body-morphology.html#cb117-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">start.bg =</span> <span class="dv">1</span>, </span>
+<span id="cb117-9"><a href="body-morphology.html#cb117-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end.bg =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="supp_files/figure-html/trajectory.body-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="body-morphology.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/trajectory.jpg&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="body-morphology.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics(&#39;images/trajectory.jpg&#39;)</span></span></code></pre></div>
 
 </div>
 </div>

@@ -62,3 +62,19 @@ Development of the analytical work flow and production of 3D scans from the Turn
 ## Data management
 
 The data and analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework ([DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/)).
+
+## Colophon
+
+This version of the analysis was generated on `r Sys.time()` using the following computational environment and dependencies: 
+
+```{r colophon, cache = FALSE}
+# what R packages and versions were used?
+if ("devtools" %in% installed.packages()) devtools::session_info()
+```
+
+Current Git commit details are:
+
+```{r}
+# where can I find this commit? 
+if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())  
+```

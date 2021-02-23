@@ -7,6 +7,7 @@ analysis-of-components
 acknowledgments
 funding
 data-management
+colophon
 landmarking-protocol
 whole-bottle-morphology
 load-packages-data
