@@ -1,0 +1,17 @@
+basis-of-inquiry
+primary-findings
+acknowledgments
+funding
+data-management
+landmarking-protocol
+analysis-of-caddo-bottle-morphology
+load-packages-data
+generalised-procrustes-analysis
+boxplot
+principal-components-analysis
+define-models
+size-and-shape
+test-hypothesis
+procrustes-anova
+mean-shapes
+trajectory-analysis
