@@ -2,6 +2,8 @@ tab:gpa
 fig:box1
 basis-of-inquiry
 primary-findings
+analysis-of-whole-bottle-morphology
+analysis-of-components
 acknowledgments
 funding
 data-management

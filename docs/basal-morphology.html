@@ -136,7 +136,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#basis-of-inquiry"><i class="fa fa-check"></i><b>0.1</b> Basis of inquiry</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#primary-findings"><i class="fa fa-check"></i><b>0.2</b> Primary findings</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#primary-findings"><i class="fa fa-check"></i><b>0.2</b> Primary findings</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#analysis-of-whole-bottle-morphology"><i class="fa fa-check"></i><b>0.2.1</b> Analysis of whole bottle morphology</a></li>
+<li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#analysis-of-components"><i class="fa fa-check"></i><b>0.2.2</b> Analysis of components</a></li>
+</ul></li>
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.3</b> Acknowledgments</a></li>
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i><b>0.4</b> Funding</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#data-management"><i class="fa fa-check"></i><b>0.5</b> Data management</a></li>
@@ -1230,26 +1234,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of vectors 27 
 ## 
 ## Importance of Components:
-##                              Comp1        Comp2        Comp3        Comp4        Comp5        Comp6
-## Eigenvalues            0.001529274 0.0007320082 8.108091e-05 3.723676e-05 9.873662e-06 6.522030e-06
-## Proportion of Variance 0.635466924 0.3041750105 3.369195e-02 1.547317e-02 4.102852e-03 2.710131e-03
-## Cumulative Proportion  0.635466924 0.9396419349 9.733339e-01 9.888071e-01 9.929099e-01 9.956200e-01
-##                               Comp7        Comp8        Comp9       Comp10       Comp11       Comp12
-## Eigenvalues            5.453570e-06 2.087170e-06 1.414249e-06 1.139495e-06 3.444275e-07 6.753524e-08
-## Proportion of Variance 2.266149e-03 8.672920e-04 5.876699e-04 4.735001e-04 1.431217e-04 2.806325e-05
-## Cumulative Proportion  9.978862e-01 9.987535e-01 9.993412e-01 9.998147e-01 9.999578e-01 9.999858e-01
-##                              Comp13       Comp14       Comp15       Comp16       Comp17       Comp18
-## Eigenvalues            2.917383e-08 4.907219e-09 1.051471e-13 3.832422e-17 3.219272e-17 2.324925e-17
-## Proportion of Variance 1.212275e-05 2.039121e-06 4.369228e-11 1.592505e-14 1.337720e-14 9.660877e-15
-## Cumulative Proportion  9.999980e-01 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00
-##                              Comp19       Comp20       Comp21       Comp22       Comp23       Comp24
-## Eigenvalues            1.895036e-17 1.395864e-17 4.901097e-32 4.076656e-33 2.809644e-33 1.833616e-33
-## Proportion of Variance 7.874538e-15 5.800301e-15 2.036577e-29 1.693993e-30 1.167505e-30 7.619316e-31
-## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00
-##                              Comp25       Comp26       Comp27
-## Eigenvalues            1.380863e-34 1.478301e-35 1.224605e-35
-## Proportion of Variance 5.737969e-32 6.142857e-33 5.088660e-33
-## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00</code></pre>
+##                              Comp1        Comp2        Comp3        Comp4        Comp5        Comp6        Comp7        Comp8        Comp9       Comp10       Comp11       Comp12
+## Eigenvalues            0.001529274 0.0007320082 8.108091e-05 3.723676e-05 9.873662e-06 6.522030e-06 5.453570e-06 2.087170e-06 1.414249e-06 1.139495e-06 3.444275e-07 6.753524e-08
+## Proportion of Variance 0.635466924 0.3041750105 3.369195e-02 1.547317e-02 4.102852e-03 2.710131e-03 2.266149e-03 8.672920e-04 5.876699e-04 4.735001e-04 1.431217e-04 2.806325e-05
+## Cumulative Proportion  0.635466924 0.9396419349 9.733339e-01 9.888071e-01 9.929099e-01 9.956200e-01 9.978862e-01 9.987535e-01 9.993412e-01 9.998147e-01 9.999578e-01 9.999858e-01
+##                              Comp13       Comp14       Comp15       Comp16       Comp17       Comp18       Comp19       Comp20       Comp21       Comp22       Comp23
+## Eigenvalues            2.917383e-08 4.907219e-09 1.051471e-13 3.832422e-17 3.219272e-17 2.324925e-17 1.895036e-17 1.395864e-17 4.901097e-32 4.076656e-33 2.809644e-33
+## Proportion of Variance 1.212275e-05 2.039121e-06 4.369228e-11 1.592505e-14 1.337720e-14 9.660877e-15 7.874538e-15 5.800301e-15 2.036577e-29 1.693993e-30 1.167505e-30
+## Cumulative Proportion  9.999980e-01 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00
+##                              Comp24       Comp25       Comp26       Comp27
+## Eigenvalues            1.833616e-33 1.380863e-34 1.478301e-35 1.224605e-35
+## Proportion of Variance 7.619316e-31 5.737969e-32 6.142857e-33 5.088660e-33
+## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00</code></pre>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="basal-morphology.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
 <span id="cb130-2"><a href="basal-morphology.html#cb130-2" aria-hidden="true" tabindex="-1"></a>pch.gps.comb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">18</span>)[<span class="fu">as.factor</span>(comb)]</span>
 <span id="cb130-3"><a href="basal-morphology.html#cb130-3" aria-hidden="true" tabindex="-1"></a>col.gps.comb <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(comb)]</span>

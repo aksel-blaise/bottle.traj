@@ -136,7 +136,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#basis-of-inquiry"><i class="fa fa-check"></i><b>0.1</b> Basis of inquiry</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#primary-findings"><i class="fa fa-check"></i><b>0.2</b> Primary findings</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#primary-findings"><i class="fa fa-check"></i><b>0.2</b> Primary findings</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#analysis-of-whole-bottle-morphology"><i class="fa fa-check"></i><b>0.2.1</b> Analysis of whole bottle morphology</a></li>
+<li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#analysis-of-components"><i class="fa fa-check"></i><b>0.2.2</b> Analysis of components</a></li>
+</ul></li>
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.3</b> Acknowledgments</a></li>
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i><b>0.4</b> Funding</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#data-management"><i class="fa fa-check"></i><b>0.5</b> Data management</a></li>
@@ -271,12 +275,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Loading required package: RRPP</code></pre>
 <pre><code>## Loading required package: rgl</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="whole-bottle-morphology.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## -- Attaching packages ----------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## -- Attaching packages ----------------------------------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
 ## v tibble  3.0.6     v dplyr   1.0.4
 ## v tidyr   1.1.2     v stringr 1.4.0
 ## v readr   1.4.0     v forcats 0.5.1</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts -------------------------------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="whole-bottle-morphology.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
@@ -1235,70 +1239,42 @@ Figure 2.1: Boxplot of centroid size by spatial/temporal unit.
 ## Number of vectors 94 
 ## 
 ## Importance of Components:
-##                              Comp1       Comp2      Comp3        Comp4       Comp5       Comp6
-## Eigenvalues            0.007873265 0.004425944 0.00144765 0.0006653946 0.000365315 0.000167238
-## Proportion of Variance 0.508905787 0.286080584 0.09357203 0.0430092429 0.023612937 0.010809793
-## Cumulative Proportion  0.508905787 0.794986371 0.88855840 0.9315676477 0.955180585 0.965990377
-##                               Comp7        Comp8        Comp9       Comp10       Comp11       Comp12
-## Eigenvalues            0.0001312098 8.902624e-05 6.987494e-05 4.385343e-05 3.896804e-05 3.306192e-05
-## Proportion of Variance 0.0084810327 5.754406e-03 4.516520e-03 2.834563e-03 2.518785e-03 2.137030e-03
-## Cumulative Proportion  0.9744714102 9.802258e-01 9.847423e-01 9.875769e-01 9.900957e-01 9.922327e-01
-##                              Comp13       Comp14       Comp15       Comp16       Comp17       Comp18
-## Eigenvalues            2.857672e-05 1.884971e-05 1.511738e-05 1.166749e-05 7.340905e-06 6.485190e-06
-## Proportion of Variance 1.847119e-03 1.218392e-03 9.771453e-04 7.541536e-04 4.744955e-04 4.191845e-04
-## Cumulative Proportion  9.940798e-01 9.952982e-01 9.962754e-01 9.970295e-01 9.975040e-01 9.979232e-01
-##                              Comp19       Comp20       Comp21       Comp22       Comp23       Comp24
-## Eigenvalues            5.514481e-06 5.038877e-06 3.634505e-06 2.656661e-06 1.977827e-06 1.789915e-06
-## Proportion of Variance 3.564406e-04 3.256989e-04 2.349242e-04 1.717191e-04 1.278412e-04 1.156951e-04
-## Cumulative Proportion  9.982796e-01 9.986053e-01 9.988403e-01 9.990120e-01 9.991398e-01 9.992555e-01
-##                              Comp25       Comp26       Comp27       Comp28       Comp29       Comp30
-## Eigenvalues            1.358874e-06 1.085909e-06 1.053445e-06 1.003879e-06 7.939259e-07 7.736694e-07
-## Proportion of Variance 8.783383e-05 7.019010e-05 6.809170e-05 6.488795e-05 5.131715e-05 5.000782e-05
-## Cumulative Proportion  9.993434e-01 9.994135e-01 9.994816e-01 9.995465e-01 9.995978e-01 9.996479e-01
-##                              Comp31       Comp32       Comp33       Comp34       Comp35       Comp36
-## Eigenvalues            6.187956e-07 5.799077e-07 4.863319e-07 3.974048e-07 3.823365e-07 3.261221e-07
-## Proportion of Variance 3.999721e-05 3.748361e-05 3.143513e-05 2.568713e-05 2.471316e-05 2.107962e-05
-## Cumulative Proportion  9.996878e-01 9.997253e-01 9.997568e-01 9.997825e-01 9.998072e-01 9.998282e-01
-##                              Comp37       Comp38       Comp39       Comp40       Comp41       Comp42
-## Eigenvalues            3.124219e-07 2.554880e-07 2.182827e-07 2.110372e-07 1.823501e-07 1.685742e-07
-## Proportion of Variance 2.019408e-05 1.651403e-05 1.410918e-05 1.364085e-05 1.178660e-05 1.089616e-05
-## Cumulative Proportion  9.998484e-01 9.998650e-01 9.998791e-01 9.998927e-01 9.999045e-01 9.999154e-01
-##                              Comp43       Comp44       Comp45       Comp46       Comp47       Comp48
-## Eigenvalues            1.398269e-07 1.323013e-07 1.298645e-07 9.935186e-08 9.258452e-08 8.187882e-08
-## Proportion of Variance 9.038019e-06 8.551585e-06 8.394075e-06 6.421825e-06 5.984404e-06 5.292417e-06
-## Cumulative Proportion  9.999244e-01 9.999330e-01 9.999414e-01 9.999478e-01 9.999538e-01 9.999591e-01
-##                              Comp49       Comp50       Comp51       Comp52       Comp53       Comp54
-## Eigenvalues            7.199289e-08 6.583570e-08 5.398235e-08 4.923070e-08 4.416412e-08 4.172011e-08
-## Proportion of Variance 4.653418e-06 4.255435e-06 3.489268e-06 3.182134e-06 2.854645e-06 2.696671e-06
-## Cumulative Proportion  9.999637e-01 9.999680e-01 9.999715e-01 9.999747e-01 9.999775e-01 9.999802e-01
-##                              Comp55       Comp56       Comp57       Comp58       Comp59       Comp60
-## Eigenvalues            3.566585e-08 3.361173e-08 2.829523e-08 2.414620e-08 2.015781e-08 1.997507e-08
-## Proportion of Variance 2.305340e-06 2.172568e-06 1.828924e-06 1.560743e-06 1.302944e-06 1.291132e-06
-## Cumulative Proportion  9.999825e-01 9.999847e-01 9.999865e-01 9.999881e-01 9.999894e-01 9.999907e-01
-##                              Comp61       Comp62       Comp63       Comp64       Comp65       Comp66
-## Eigenvalues            1.689190e-08 1.617265e-08 1.548022e-08 1.294355e-08 1.164172e-08 8.643788e-09
-## Proportion of Variance 1.091845e-06 1.045354e-06 1.000598e-06 8.366350e-07 7.524882e-07 5.587102e-07
-## Cumulative Proportion  9.999918e-01 9.999928e-01 9.999938e-01 9.999946e-01 9.999954e-01 9.999959e-01
-##                              Comp67       Comp68       Comp69       Comp70       Comp71       Comp72
-## Eigenvalues            8.191522e-09 7.429701e-09 7.198853e-09 5.768361e-09 4.702120e-09 4.304749e-09
-## Proportion of Variance 5.294770e-07 4.802351e-07 4.653137e-07 3.728507e-07 3.039318e-07 2.782469e-07
-## Cumulative Proportion  9.999965e-01 9.999970e-01 9.999974e-01 9.999978e-01 9.999981e-01 9.999984e-01
-##                              Comp73       Comp74       Comp75       Comp76       Comp77       Comp78
-## Eigenvalues            4.124299e-09 3.917233e-09 3.083503e-09 2.539693e-09 2.263717e-09 1.777849e-09
-## Proportion of Variance 2.665831e-07 2.531989e-07 1.993090e-07 1.641586e-07 1.463203e-07 1.149152e-07
-## Cumulative Proportion  9.999986e-01 9.999989e-01 9.999991e-01 9.999993e-01 9.999994e-01 9.999995e-01
-##                              Comp79       Comp80       Comp81       Comp82       Comp83       Comp84
-## Eigenvalues            1.457729e-09 1.279492e-09 9.079646e-10 7.941435e-10 7.255847e-10 5.093597e-10
-## Proportion of Variance 9.422351e-08 8.270274e-08 5.868828e-08 5.133121e-08 4.689976e-08 3.292358e-08
-## Cumulative Proportion  9.999996e-01 9.999997e-01 9.999998e-01 9.999998e-01 9.999999e-01 9.999999e-01
-##                              Comp85       Comp86       Comp87       Comp88       Comp89       Comp90
-## Eigenvalues            4.732068e-10 3.669145e-10 2.123219e-10 1.996531e-10 1.987433e-10 1.252079e-10
-## Proportion of Variance 3.058676e-08 2.371633e-08 1.372390e-08 1.290502e-08 1.284621e-08 8.093089e-09
-## Cumulative Proportion  9.999999e-01 9.999999e-01 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00
-##                              Comp91       Comp92       Comp93       Comp94
-## Eigenvalues            7.996617e-11 2.609662e-11 9.102545e-12 3.469617e-34
-## Proportion of Variance 5.168789e-09 1.686812e-09 5.883630e-10 2.242663e-32
-## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00</code></pre>
+##                              Comp1       Comp2      Comp3        Comp4       Comp5       Comp6        Comp7        Comp8        Comp9       Comp10       Comp11       Comp12
+## Eigenvalues            0.007873265 0.004425944 0.00144765 0.0006653946 0.000365315 0.000167238 0.0001312098 8.902624e-05 6.987494e-05 4.385343e-05 3.896804e-05 3.306192e-05
+## Proportion of Variance 0.508905787 0.286080584 0.09357203 0.0430092429 0.023612937 0.010809793 0.0084810327 5.754406e-03 4.516520e-03 2.834563e-03 2.518785e-03 2.137030e-03
+## Cumulative Proportion  0.508905787 0.794986371 0.88855840 0.9315676477 0.955180585 0.965990377 0.9744714102 9.802258e-01 9.847423e-01 9.875769e-01 9.900957e-01 9.922327e-01
+##                              Comp13       Comp14       Comp15       Comp16       Comp17       Comp18       Comp19       Comp20       Comp21       Comp22       Comp23
+## Eigenvalues            2.857672e-05 1.884971e-05 1.511738e-05 1.166749e-05 7.340905e-06 6.485190e-06 5.514481e-06 5.038877e-06 3.634505e-06 2.656661e-06 1.977827e-06
+## Proportion of Variance 1.847119e-03 1.218392e-03 9.771453e-04 7.541536e-04 4.744955e-04 4.191845e-04 3.564406e-04 3.256989e-04 2.349242e-04 1.717191e-04 1.278412e-04
+## Cumulative Proportion  9.940798e-01 9.952982e-01 9.962754e-01 9.970295e-01 9.975040e-01 9.979232e-01 9.982796e-01 9.986053e-01 9.988403e-01 9.990120e-01 9.991398e-01
+##                              Comp24       Comp25       Comp26       Comp27       Comp28       Comp29       Comp30       Comp31       Comp32       Comp33       Comp34
+## Eigenvalues            1.789915e-06 1.358874e-06 1.085909e-06 1.053445e-06 1.003879e-06 7.939259e-07 7.736694e-07 6.187956e-07 5.799077e-07 4.863319e-07 3.974048e-07
+## Proportion of Variance 1.156951e-04 8.783383e-05 7.019010e-05 6.809170e-05 6.488795e-05 5.131715e-05 5.000782e-05 3.999721e-05 3.748361e-05 3.143513e-05 2.568713e-05
+## Cumulative Proportion  9.992555e-01 9.993434e-01 9.994135e-01 9.994816e-01 9.995465e-01 9.995978e-01 9.996479e-01 9.996878e-01 9.997253e-01 9.997568e-01 9.997825e-01
+##                              Comp35       Comp36       Comp37       Comp38       Comp39       Comp40       Comp41       Comp42       Comp43       Comp44       Comp45
+## Eigenvalues            3.823365e-07 3.261221e-07 3.124219e-07 2.554880e-07 2.182827e-07 2.110372e-07 1.823501e-07 1.685742e-07 1.398269e-07 1.323013e-07 1.298645e-07
+## Proportion of Variance 2.471316e-05 2.107962e-05 2.019408e-05 1.651403e-05 1.410918e-05 1.364085e-05 1.178660e-05 1.089616e-05 9.038019e-06 8.551585e-06 8.394075e-06
+## Cumulative Proportion  9.998072e-01 9.998282e-01 9.998484e-01 9.998650e-01 9.998791e-01 9.998927e-01 9.999045e-01 9.999154e-01 9.999244e-01 9.999330e-01 9.999414e-01
+##                              Comp46       Comp47       Comp48       Comp49       Comp50       Comp51       Comp52       Comp53       Comp54       Comp55       Comp56
+## Eigenvalues            9.935186e-08 9.258452e-08 8.187882e-08 7.199289e-08 6.583570e-08 5.398235e-08 4.923070e-08 4.416412e-08 4.172011e-08 3.566585e-08 3.361173e-08
+## Proportion of Variance 6.421825e-06 5.984404e-06 5.292417e-06 4.653418e-06 4.255435e-06 3.489268e-06 3.182134e-06 2.854645e-06 2.696671e-06 2.305340e-06 2.172568e-06
+## Cumulative Proportion  9.999478e-01 9.999538e-01 9.999591e-01 9.999637e-01 9.999680e-01 9.999715e-01 9.999747e-01 9.999775e-01 9.999802e-01 9.999825e-01 9.999847e-01
+##                              Comp57       Comp58       Comp59       Comp60       Comp61       Comp62       Comp63       Comp64       Comp65       Comp66       Comp67
+## Eigenvalues            2.829523e-08 2.414620e-08 2.015781e-08 1.997507e-08 1.689190e-08 1.617265e-08 1.548022e-08 1.294355e-08 1.164172e-08 8.643788e-09 8.191522e-09
+## Proportion of Variance 1.828924e-06 1.560743e-06 1.302944e-06 1.291132e-06 1.091845e-06 1.045354e-06 1.000598e-06 8.366350e-07 7.524882e-07 5.587102e-07 5.294770e-07
+## Cumulative Proportion  9.999865e-01 9.999881e-01 9.999894e-01 9.999907e-01 9.999918e-01 9.999928e-01 9.999938e-01 9.999946e-01 9.999954e-01 9.999959e-01 9.999965e-01
+##                              Comp68       Comp69       Comp70       Comp71       Comp72       Comp73       Comp74       Comp75       Comp76       Comp77       Comp78
+## Eigenvalues            7.429701e-09 7.198853e-09 5.768361e-09 4.702120e-09 4.304749e-09 4.124299e-09 3.917233e-09 3.083503e-09 2.539693e-09 2.263717e-09 1.777849e-09
+## Proportion of Variance 4.802351e-07 4.653137e-07 3.728507e-07 3.039318e-07 2.782469e-07 2.665831e-07 2.531989e-07 1.993090e-07 1.641586e-07 1.463203e-07 1.149152e-07
+## Cumulative Proportion  9.999970e-01 9.999974e-01 9.999978e-01 9.999981e-01 9.999984e-01 9.999986e-01 9.999989e-01 9.999991e-01 9.999993e-01 9.999994e-01 9.999995e-01
+##                              Comp79       Comp80       Comp81       Comp82       Comp83       Comp84       Comp85       Comp86       Comp87       Comp88       Comp89
+## Eigenvalues            1.457729e-09 1.279492e-09 9.079646e-10 7.941435e-10 7.255847e-10 5.093597e-10 4.732068e-10 3.669145e-10 2.123219e-10 1.996531e-10 1.987433e-10
+## Proportion of Variance 9.422351e-08 8.270274e-08 5.868828e-08 5.133121e-08 4.689976e-08 3.292358e-08 3.058676e-08 2.371633e-08 1.372390e-08 1.290502e-08 1.284621e-08
+## Cumulative Proportion  9.999996e-01 9.999997e-01 9.999998e-01 9.999998e-01 9.999999e-01 9.999999e-01 9.999999e-01 9.999999e-01 1.000000e+00 1.000000e+00 1.000000e+00
+##                              Comp90       Comp91       Comp92       Comp93       Comp94
+## Eigenvalues            1.252079e-10 7.996617e-11 2.609662e-11 9.102545e-12 3.469617e-34
+## Proportion of Variance 8.093089e-09 5.168789e-09 1.686812e-09 5.883630e-10 2.242663e-32
+## Cumulative Proportion  1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="whole-bottle-morphology.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set plot parameters</span></span>
 <span id="cb18-2"><a href="whole-bottle-morphology.html#cb18-2" aria-hidden="true" tabindex="-1"></a>pch.gps.comb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">18</span>)[<span class="fu">as.factor</span>(comb)]</span>
 <span id="cb18-3"><a href="whole-bottle-morphology.html#cb18-3" aria-hidden="true" tabindex="-1"></a>col.gps.comb <span class="ot">&lt;-</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Moonrise2&quot;</span>)[<span class="fu">as.factor</span>(comb)]</span>

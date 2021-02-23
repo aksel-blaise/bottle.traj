@@ -24,11 +24,11 @@ In a June 18, 1937 WPA interview with Lillian Cassaway, Sadie Bedoka---a Caddo-D
 
 Diagnostic types---whether `functional`, `decorative`, `morphological`, or `chronological` [@RN20847]---are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based primarily upon decorative motif, and not morphology [@RN5769;@RN7795]. Morphological differences between the northern and southern Caddo bottle shapes have been the topic of recent studies [@RN7162;@RN5693;@RN8074;@RN7927;@RN8370;@RN8312], and geographical (north-south) differences occur across the same shape boundary for Gahagan bifaces [@RN11783;@RN8322] as well as [Perdiz arrow points](https://aksel-blaise.github.io/perdiz2/). 
 
-In recent analyses of Caddo bottle morphology [@RN8074;@RN7927;@RN8370;@RN8312], vessels of the same `decorative` types were found to differ in morphology across a specific geographic range. It is not known whether the same Caddo maker that crafted a vessel's shape also applied the various decorative elements; however, if the maker is also assumed to have applied the motif, then it may be the case that Caddo vessel shapes and decorative elements incorporate discrete components of cultural signals, perhaps akin to those of the _autogenous_ and _adherent_ signals proposed by Kubler [-@RN8105].
+In recent analyses of Caddo bottle morphology [@RN8074;@RN7927;@RN8370;@RN8312], vessels of the same `decorative` types were found to differ in morphology across a specific geographic range. It is not known whether the same Caddo maker that crafted a vessel's shape also applied the various decorative elements; however, if the maker is also assumed to have applied the motif, then it may be the case that Caddo vessel shapes and decorative elements incorporate discrete components of cultural signals, similar to the _autogenous_ and _adherent_ signals proposed by Kubler [-@RN8105].
 
 The analysis builds directly upon the insights provided by Sadie Bedoka, adding a temporal component to assess whether (general) Caddo bottle shapes from the northern and southern Caddo communities of practice differ through time. A recent analysis of [French trade axes](https://github.com/aksel-blaise/fta3dgm/blob/main/fta2dgm.md) successfully identified the morphological idiosyncracies of French blacksmiths, and a current study of [Caddo ceramic incision morphology](https://aksel-blaise.github.io/incision/) is extending the reach of morphological studies by asking if it might be possible to identify whether Caddo makers used a standard tool (or toolkit) to apply the diverse decorative motifs that adorn Caddo ceramics. While the Caddo bottles do not evince a makers' mark akin to those found on the French trade axes, most include decorative elements that may provide an additional means of identifying the numerous constituent groups that comprised the Caddo Confederacy [@RN9005].
 
-This exploratory study enlists a novel, and replicable, 3D landmarking protocol that provides a means of further parsing Caddo bottles into discrete components (i.e., rim, neck, body, and base). If the hypothesis is supported, subsequent analyses will be run to identify which morphological component---or suite of components---are driving the pattern.
+This exploratory study enlists a novel, and replicable, 3D landmarking protocol that provides a means of further parsing Caddo bottles into discrete components (i.e., rim, neck, body, and base). If the hypothesis is supported in the analysis of whole bottles, subsequent analyses will be run to identify which morphological component---or suite of components---are driving the pattern.
 
 _The goal of this endeavour is to assess shape change through time for Caddo bottles found in the geographies of the northern and southern Caddo communities of practice, as defined in a recent exploratory network analysis [@RN8031]._
 
@@ -38,9 +38,18 @@ knitr::include_graphics('./images/fig.map.jpg')
 
 ## Primary findings
 
+### Analysis of whole bottle morphology
+
 * Caddo bottle size **does not differ** significantly by geography, but **differs** significantly by time
 * Caddo bottle shape **differs** significantly by geography and time
 * Caddo bottle shape trajectories **differ** significantly through time for the northern and southern Caddo communities of practice
+
+### Analysis of components
+
+* Caddo bottle _rim_ shape **differs** significantly by time
+* Caddo bottle _neck_ shape and size **differs** significantly by and through time
+* Caddo bottle _body_ shape **differs** significantly by geography and time
+* Caddo bottle _base_ size **differs** significantly by time
 
 ## Acknowledgments
 
