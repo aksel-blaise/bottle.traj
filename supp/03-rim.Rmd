@@ -234,28 +234,3 @@ plotRefToTarget(mean$`south, formative early`,
 
 #knitr::include_graphics('images/comp.composite.jpg')
 ```
-
-## Trajectory analysis
-
-```{r trajectory.rim, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# trajectory analysis::shape
-TA <- trajectory.analysis(fit.shape, 
-                          groups = qdata$geo, 
-                          traj.pts = qdata$time, 
-                          print.progress = FALSE)
-
-# magnitude difference
-summary(TA, attribute = "MD")
-
-# plot
-TP <- plot(TA, 
-           pch = as.numeric(qdata$geo), 
-           bg = as.numeric(qdata$time),
-           cex = 0.9,
-           col = "gray")
-add.trajectories(TP, traj.pch = c(15, 19),
-                 start.bg = 1, 
-                 end.bg = 2)
-
-#knitr::include_graphics('images/trajectory.jpg')
-```

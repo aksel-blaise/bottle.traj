@@ -30,7 +30,6 @@ size-and-shape-1
 test-hypothesis-1
 procrustes-anova-1
 mean-shapes-1
-trajectory-analysis-1
 neck-morphology
 load-packages-data-2
 generalised-procrustes-analysis-2
@@ -41,7 +40,6 @@ size-and-shape-2
 test-hypothesis-2
 procrustes-anova-2
 mean-shapes-2
-trajectory-analysis-2
 body-morphology
 load-packages-data-3
 generalised-procrustes-analysis-3
@@ -52,7 +50,6 @@ size-and-shape-3
 test-hypothesis-3
 procrustes-anova-3
 mean-shapes-3
-trajectory-analysis-3
 basal-morphology
 load-packages-data-4
 generalised-procrustes-analysis-4
@@ -63,4 +60,10 @@ size-and-shape-4
 test-hypothesis-4
 procrustes-anova-4
 mean-shapes-4
-trajectory-analysis-4
+caddo-bottle-asymmetry
+load-packages-data-5
+generalised-procrustes-analysis-5
+principal-components-analysis-5
+define-models-5
+hypothesis
+procrustes-anova-5
