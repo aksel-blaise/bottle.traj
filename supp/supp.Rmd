@@ -1,3 +1,41 @@
+--- 
+title: "Patterns of shape change for ceramic bottles recovered from the southern Caddo area"
+author: "Robert Z. Selden, Jr."
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Analysis of shape change in Caddo bottle morphology."
+---
+
+# Preface {-}
+
+Placeholder
+
+
+## Primary findings
+## Acknowledgments
+## Funding
+## Data management
+
+<!--chapter:end:index.Rmd-->
+
+# Landmarking Protocol
+
+<!--chapter:end:02-lm.protocol.Rmd-->
+
+
+# Landmark Sampling Evaluation Curve (LaSEC)
+
+Placeholder
+
+
+## Analysis of experimental sample
+
+<!--chapter:end:03-lasec.Rmd-->
+
 # Analysis of Caddo bottle morphology
 
 ## Load packages + data
@@ -96,13 +134,13 @@ fit.sz.ccomb <- procD.lm(shape ~ size + comb,
                         iter = 9999)
 
 # allometry - unique allometries -> geo
-fit.sz.ugeo <- procD.lm(shape ~ size * geo, 
+fit.sz.ucomb <- procD.lm(shape ~ size * geo, 
                         data = gdf, 
                         print.progress = FALSE, 
                         iter = 9999)
 
 # allometry - unique allometries -> time
-fit.sz.utime <- procD.lm(shape ~ size * time, 
+fit.sz.ucomb <- procD.lm(shape ~ size * time, 
                         data = gdf, 
                         print.progress = FALSE, 
                         iter = 9999)
@@ -175,11 +213,8 @@ pc.plot1 <- plot(pca,
 # comb
 anova(fit.sz.ccomb) # common allometry (comb)
 
-# geo
-anova(fit.sz.ugeo) # unique allometry (geo)
-
-# time
-anova(fit.sz.utime) # unique allometry (time)
+# comb
+anova(fit.sz.ucomb) # unique allometry (comb)
 
 # ANOVA: do Caddo bottle shapes differ by comb?
 anova(fit.shape.comb)
@@ -225,16 +260,8 @@ plotAllometry(fit.sz.ccomb,
 ```{r u.allom.h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 ## predline (Adams and Nistri 2010)
 
-# geo
-plotAllometry(fit.sz.ugeo, 
-              size = gdf$size, 
-              logsz = TRUE, 
-              method = "PredLine", 
-              pch = pch.gps.comb, 
-              col = col.gps.comb)
-
-# time
-plotAllometry(fit.sz.utime, 
+# geo + time
+plotAllometry(fit.sz.ucomb, 
               size = gdf$size, 
               logsz = TRUE, 
               method = "PredLine", 
@@ -371,3 +398,12 @@ add.trajectories(TP, traj.pch = c(21, 22),
                  start.bg = 1, 
                  end.bg = 2)
 ```
+
+<!--chapter:end:04-3dgm1.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+

@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Morphological analysis of Caddo bottles."
+description: "Analysis of shape change in Caddo bottle morphology."
 ---
 
 # Preface {-}
