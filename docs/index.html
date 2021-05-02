@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Which way toward the maker? Patterns of shape change in Caddo bottles</title>
   <meta name="description" content="Analysis of shape change in Caddo bottle morphology." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Which way toward the maker? Patterns of shape change in Caddo bottles" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Z. Selden, Jr." />
 
 
-<meta name="date" content="2021-03-31" />
+<meta name="date" content="2021-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -186,23 +211,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Which way toward the maker? Patterns of shape change in Caddo bottles</h1>
 <p class="author"><em>Robert Z. Selden, Jr.</em></p>
-<p class="date"><em>2021-03-31</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-05-02</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <blockquote>
-<p>Reproducibility—the ability to recompute results—and replicability—the chances other experimenters will achieve a consistent result—are two foundational characteristics of successful scientific research <span class="citation">(<a href="references.html#ref-RN20918" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
+<p>Reproducibility—the ability to recompute results—and replicability—the chances other experimenters will achieve a consistent result—are two foundational characteristics of successful scientific research <span class="citation">(<a href="#ref-RN20918" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
 </blockquote>
-<p>This volume is written using <em>Markdown</em>, and includes all analysis code employed in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in the following chapters. The replicable nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components of this study <span class="citation">(<a href="references.html#ref-RN20915" role="doc-biblioref">Gray and Marwick 2019</a>; <a href="references.html#ref-RN20916" role="doc-biblioref">Peng 2011</a>; <a href="references.html#ref-RN20917" role="doc-biblioref">Gandrud 2014</a>)</span>, which is a necessary requirement for the production of reliable knowledge.</p>
+<p>This volume is written using <em>Markdown</em>, and includes all analysis code employed in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in the following chapters. The replicable nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components of this study <span class="citation">(<a href="#ref-RN20915" role="doc-biblioref">Gray and Marwick 2019</a>; <a href="#ref-RN20916" role="doc-biblioref">Peng 2011</a>; <a href="#ref-RN20917" role="doc-biblioref">Gandrud 2014</a>)</span>, which is a necessary requirement for the production of reliable knowledge.</p>
 <div id="basis-of-inquiry" class="section level2" number="0.1">
 <h2><span class="header-section-number">0.1</span> Basis of inquiry</h2>
 <p>In a June 18, 1937 WPA interview with Lillian Cassaway, Sadie Bedoka—a Caddo-Delaware woman who was raised wth the Caddo—states that:</p>
 <blockquote>
-<p>Each [Caddo] clan had its own shape to make its pottery. One clan never thought of making anything the same pattern of another clan. <strong><em>You could tell who made the pottery by the shape</em></strong> <span class="citation">(<a href="references.html#ref-RN9357x" role="doc-biblioref">Cassaway 1937, 395</a>)</span>.</p>
+<p>Each [Caddo] clan had its own shape to make its pottery. One clan never thought of making anything the same pattern of another clan. <strong><em>You could tell who made the pottery by the shape</em></strong> <span class="citation">(<a href="#ref-RN9357x" role="doc-biblioref">Cassaway 1937, 395</a>)</span>.</p>
 </blockquote>
-<p>Diagnostic types—whether <code>functional</code>, <code>decorative</code>, <code>morphological</code>, or <code>chronological</code> <span class="citation">(<a href="references.html#ref-RN20847" role="doc-biblioref">O’Brien and Lyman 1999</a>)</span>—are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based primarily upon decorative motifs, and not morphology <span class="citation">(<a href="references.html#ref-RN5769" role="doc-biblioref">Suhm, Krieger, and Jelks 1954</a>; <a href="references.html#ref-RN7795" role="doc-biblioref">Suhm and Jelks 1962</a>)</span>. In recent analyses of Caddo bottle morphology <span class="citation">(<a href="references.html#ref-RN8074" role="doc-biblioref">Selden Jr. 2018a</a>, <a href="references.html#ref-RN7927" role="doc-biblioref">2018b</a>, <a href="references.html#ref-RN8370" role="doc-biblioref">2019a</a>)</span>, vessels of the same <code>decorative</code> types (Hickory Engraved and Smithport Plain) were found to differ in morphology when recovered from discrete geographical regions. Those studies were subsequently expanded to include a variety of Formative/Early and Late/Historic Caddo bottle types—from the same regions—to assess whether the shape differences identified in the Hickory Engraved and Smithport Plain vessels extend to Caddo bottles <em>generally</em>, and whether those shapes differed through time <span class="citation">(<a href="references.html#ref-RN8312" role="doc-biblioref">Selden Jr. 2021b</a>)</span>.</p>
-<p>It remains unknown whether the same Caddo potter that crafted the vessel’s form also applied the various decorative elements; however, if the same potter is assumed to have applied the motif, then it may be the case that Caddo vessel shapes and decorative elements were intended to incorporate discrete cultural signals. More recently, morphological differences were found to occur across the same geography for Gahagan bifaces <span class="citation">(<a href="references.html#ref-RN11783" role="doc-biblioref">Selden Jr., Dockall, and Shafer 2018</a>; <a href="references.html#ref-RN8322" role="doc-biblioref">Selden Jr., Dockall, and Dubied 2020</a>)</span> and <a href="https://aksel-blaise.github.io/perdiz2/">Perdiz arrow points</a>, lending further support to the spatial hypothesis. While the present study does not yet move beyond an analysis of the larger northern and southern Caddo communities of practice, it expands the previously identified <em>shape boundary</em> <span class="citation">(<a href="references.html#ref-RN20852" role="doc-biblioref">Selden Jr. 2019b</a>)</span> westward into Texas.</p>
-<p><em>The goal of this endeavour is to assess shape change through time for Caddo bottles found in the geographies of the northern and southern Caddo communities of practice, as defined in a recent exploratory network analysis <span class="citation">(<a href="references.html#ref-RN8031" role="doc-biblioref">Selden Jr. 2021a</a>)</span>.</em></p>
+<p>Diagnostic types—whether <code>functional</code>, <code>decorative</code>, <code>morphological</code>, or <code>chronological</code> <span class="citation">(<a href="#ref-RN20847" role="doc-biblioref">O’Brien and Lyman 1999</a>)</span>—are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based primarily upon decorative motifs, and not morphology <span class="citation">(<a href="#ref-RN5769" role="doc-biblioref">Suhm, Krieger, and Jelks 1954</a>; <a href="#ref-RN7795" role="doc-biblioref">Suhm and Jelks 1962</a>)</span>. In recent analyses of Caddo bottle morphology <span class="citation">(<a href="#ref-RN8074" role="doc-biblioref">Selden Jr. 2018a</a>, <a href="#ref-RN7927" role="doc-biblioref">2018b</a>, <a href="#ref-RN8370" role="doc-biblioref">2019a</a>)</span>, vessels of the same <code>decorative</code> types (Hickory Engraved and Smithport Plain) were found to differ in morphology when recovered from discrete geographical regions. Those studies were subsequently expanded to include a variety of Formative/Early and Late/Historic Caddo bottle types—from the same regions—to assess whether the shape differences identified in the Hickory Engraved and Smithport Plain vessels extend to Caddo bottles <em>generally</em>, and whether those shapes differed through time <span class="citation">(<a href="#ref-RN8312" role="doc-biblioref">Selden Jr. 2021b</a>)</span>.</p>
+<p>It remains unknown whether the same Caddo potter that crafted the vessel’s form also applied the various decorative elements; however, if the same potter is assumed to have applied the motif, then it may be the case that Caddo vessel shapes and decorative elements were intended to incorporate discrete cultural signals. More recently, morphological differences were found to occur across the same geography for Gahagan bifaces <span class="citation">(<a href="#ref-RN11783" role="doc-biblioref">Selden Jr., Dockall, and Shafer 2018</a>; <a href="#ref-RN8322" role="doc-biblioref">Selden Jr., Dockall, and Dubied 2020</a>)</span> and <a href="https://aksel-blaise.github.io/perdiz2/">Perdiz arrow points</a>, lending further support to the spatial hypothesis. While the present study does not yet move beyond an analysis of the larger northern and southern Caddo communities of practice, it expands the previously identified <em>shape boundary</em> <span class="citation">(<a href="#ref-RN20852" role="doc-biblioref">Selden Jr. 2019b</a>)</span> westward into Texas.</p>
+<p><em>The goal of this endeavour is to assess shape change through time for Caddo bottles found in the geographies of the northern and southern Caddo communities of practice, as defined in a recent exploratory network analysis <span class="citation">(<a href="#ref-RN8031" role="doc-biblioref">Selden Jr. 2021a</a>)</span>.</em></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&#39;./images/fig.map.jpg&#39;</span>)</span></code></pre></div>
 <div class="figure">
 <img src="images/fig.map.jpg" alt="Archaeological site locations associated with Caddo bottles used in the study." width="984" />
@@ -232,12 +257,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="colophon" class="section level2" number="0.6">
 <h2><span class="header-section-number">0.6</span> Colophon</h2>
-<p>This version of the analysis was generated on 2021-03-31 10:15:26 using the following computational environment and dependencies:</p>
+<p>This version of the analysis was generated on 2021-05-02 06:12:39 using the following computational environment and dependencies:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what R packages and versions were used?</span></span>
 <span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;devtools&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>## - Session info ----------------------------------------------------------------------------------------------------------------
+<pre><code>## - Session info ---------------------------------------------------------------------------------------------------------
 ##  setting  value                       
-##  version  R version 4.0.4 (2021-02-15)
+##  version  R version 4.0.5 (2021-03-31)
 ##  os       Windows 10 x64              
 ##  system   x86_64, mingw32             
 ##  ui       RStudio                     
@@ -245,20 +270,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  collate  English_United States.1252  
 ##  ctype    English_United States.1252  
 ##  tz       America/Chicago             
-##  date     2021-03-31                  
+##  date     2021-05-02                  
 ## 
-## - Packages --------------------------------------------------------------------------------------------------------------------
+## - Packages -------------------------------------------------------------------------------------------------------------
 ##  package     * version date       lib source        
-##  assertthat    0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
-##  bookdown      0.21    2020-10-13 [1] CRAN (R 4.0.3)
+##  bookdown      0.22    2021-04-22 [1] CRAN (R 4.0.5)
 ##  bslib         0.2.4   2021-01-25 [1] CRAN (R 4.0.3)
 ##  cachem        1.0.4   2021-02-13 [1] CRAN (R 4.0.4)
-##  callr         3.6.0   2021-03-28 [1] CRAN (R 4.0.4)
-##  cli           2.3.1   2021-02-23 [1] CRAN (R 4.0.4)
+##  callr         3.7.0   2021-04-20 [1] CRAN (R 4.0.4)
+##  cli           2.5.0   2021-04-26 [1] CRAN (R 4.0.5)
 ##  crayon        1.4.1   2021-02-08 [1] CRAN (R 4.0.3)
-##  curl          4.3     2019-12-02 [1] CRAN (R 4.0.2)
 ##  desc          1.3.0   2021-03-05 [1] CRAN (R 4.0.4)
-##  devtools      2.3.2   2020-09-18 [1] CRAN (R 4.0.2)
+##  devtools      2.4.0   2021-04-07 [1] CRAN (R 4.0.5)
 ##  digest        0.6.27  2020-10-24 [1] CRAN (R 4.0.3)
 ##  ellipsis      0.3.1   2020-05-15 [1] CRAN (R 4.0.2)
 ##  evaluate      0.14    2019-05-28 [1] CRAN (R 4.0.2)
@@ -267,23 +290,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  git2r         0.28.0  2021-01-10 [1] CRAN (R 4.0.3)
 ##  glue          1.4.2   2020-08-27 [1] CRAN (R 4.0.2)
 ##  here          1.0.1   2020-12-13 [1] CRAN (R 4.0.3)
-##  highr         0.8     2019-03-20 [1] CRAN (R 4.0.2)
+##  highr         0.9     2021-04-16 [1] CRAN (R 4.0.4)
 ##  htmltools     0.5.1.1 2021-01-22 [1] CRAN (R 4.0.3)
 ##  jpeg          0.1-8.1 2019-10-24 [1] CRAN (R 4.0.0)
-##  jquerylib     0.1.3   2020-12-17 [1] CRAN (R 4.0.3)
+##  jquerylib     0.1.4   2021-04-26 [1] CRAN (R 4.0.5)
 ##  jsonlite      1.7.2   2020-12-09 [1] CRAN (R 4.0.3)
-##  knitr         1.31    2021-01-27 [1] CRAN (R 4.0.3)
+##  knitr         1.33    2021-04-24 [1] CRAN (R 4.0.5)
 ##  lifecycle     1.0.0   2021-02-15 [1] CRAN (R 4.0.4)
 ##  magrittr      2.0.1   2020-11-17 [1] CRAN (R 4.0.3)
 ##  memoise       2.0.0   2021-01-26 [1] CRAN (R 4.0.3)
 ##  pkgbuild      1.2.0   2020-12-15 [1] CRAN (R 4.0.3)
-##  pkgload       1.2.0   2021-02-23 [1] CRAN (R 4.0.4)
+##  pkgload       1.2.1   2021-04-06 [1] CRAN (R 4.0.5)
 ##  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 4.0.2)
-##  processx      3.5.0   2021-03-23 [1] CRAN (R 4.0.4)
+##  processx      3.5.1   2021-04-04 [1] CRAN (R 4.0.5)
 ##  ps            1.6.0   2021-02-28 [1] CRAN (R 4.0.4)
 ##  purrr         0.3.4   2020-04-17 [1] CRAN (R 4.0.2)
 ##  R6            2.5.0   2020-10-28 [1] CRAN (R 4.0.3)
-##  remotes       2.2.0   2020-07-21 [1] CRAN (R 4.0.2)
+##  remotes       2.3.0   2021-04-01 [1] CRAN (R 4.0.5)
 ##  rlang         0.4.10  2020-12-30 [1] CRAN (R 4.0.3)
 ##  rmarkdown     2.7     2021-02-19 [1] CRAN (R 4.0.4)
 ##  rprojroot     2.0.2   2020-11-15 [1] CRAN (R 4.0.3)
@@ -293,21 +316,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  stringi       1.5.3   2020-09-09 [1] CRAN (R 4.0.2)
 ##  stringr       1.4.0   2019-02-10 [1] CRAN (R 4.0.2)
 ##  testthat      3.0.2   2021-02-14 [1] CRAN (R 4.0.4)
-##  tinytex       0.31    2021-03-30 [1] CRAN (R 4.0.4)
 ##  usethis       2.0.1   2021-02-10 [1] CRAN (R 4.0.3)
-##  withr         2.4.1   2021-01-26 [1] CRAN (R 4.0.3)
+##  withr         2.4.2   2021-04-18 [1] CRAN (R 4.0.4)
 ##  xfun          0.22    2021-03-11 [1] CRAN (R 4.0.4)
 ##  yaml          2.2.1   2020-02-01 [1] CRAN (R 4.0.0)
 ## 
 ## [1] C:/Users/seldenjrz/Documents/R/win-library/4.0
-## [2] C:/Program Files/R/R-4.0.4/library</code></pre>
+## [2] C:/Program Files/R/R-4.0.5/library</code></pre>
 <p>Current Git commit details are:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># where can I find this commit? </span></span>
 <span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;git2r&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>() <span class="sc">&amp;</span> git2r<span class="sc">::</span><span class="fu">in_repository</span>(<span class="at">path =</span> <span class="st">&quot;.&quot;</span>)) git2r<span class="sc">::</span><span class="fu">repository</span>(here<span class="sc">::</span><span class="fu">here</span>())  </span></code></pre></div>
 <pre><code>## Local:    main D:/github/bottle.traj
 ## Remote:   main @ origin (https://github.com/aksel-blaise/bottle.traj)
-## Head:     [8fd8bcf] 2021-03-31: &lt;edit supp&gt;</code></pre>
+## Head:     [ba04178] 2021-03-31: &lt;edit supp&gt;</code></pre>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN9357x" class="csl-entry">
+Cassaway, Lillian. 1937. <span>“Indian-Pioneer History Project for Oklahoma: Sadie Bedoka.”</span> Report. Works Progress Administration.
+</div>
+<div id="ref-RN20917" class="csl-entry">
+Gandrud, Christopher. 2014. <em>Reproducible Research with r and RStudio</em>. The r Series. London: CRC Press.
+</div>
+<div id="ref-RN20915" class="csl-entry">
+Gray, Charles T., and Ben Marwick. 2019. <span>“Truth, Proof, and Reproducibility: There’s No Counter-Attack for the Codeless.”</span> In <em>Statistics and Data Science</em>, 111–29. Communications in Computer and Information Science. <a href="https://doi.org/10.1007/978-981-15-1960-4_8">https://doi.org/10.1007/978-981-15-1960-4_8</a>.
+</div>
+<div id="ref-RN20918" class="csl-entry">
+Leek, Jeffrey T., and Roger D. Peng. 2015. <span>“Opinion: Reproducible Research Can Still Be Wrong: Adopting a Prevention Approach.”</span> <em>Proc Natl Acad Sci U S A</em> 112 (6): 1645–46. <a href="https://doi.org/10.1073/pnas.1421412111">https://doi.org/10.1073/pnas.1421412111</a>.
+</div>
+<div id="ref-RN20847" class="csl-entry">
+O’Brien, Michael J., and R. Lee Lyman. 1999. <em>Seriation, Stratigraphy, and Index Fossils: The Backbone of Archaeological Dating</em>. New York: Kluwer Academic/Plenum Publishers.
+</div>
+<div id="ref-RN20916" class="csl-entry">
+Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-RN8074" class="csl-entry">
+Selden Jr., Robert Z. 2018a. <span>“<span class="nocase">A Preliminary Study of Smithport Plain Bottle Morphology in the Southern Caddo Area</span>.”</span> Journal Article. <em>Bulletin of the Texas Archeological Society</em> 89: 63–89. <a href="https://scholarworks.sfasu.edu/crhr/283/">https://scholarworks.sfasu.edu/crhr/283/</a>.
+</div>
+<div id="ref-RN7927" class="csl-entry">
+———. 2018b. <span>“<span class="nocase">Ceramic Morphological Organisation in the Southern Caddo Area: Quiddity of Shape for Hickory Engraved Bottles</span>.”</span> Journal Article. <em>Journal of Archaeological Science: Reports</em> 21: 884–96. <a href="https://doi.org/10.1016/j.jasrep.2018.08.045">https://doi.org/10.1016/j.jasrep.2018.08.045</a>.
+</div>
+<div id="ref-RN8370" class="csl-entry">
+———. 2019a. <span>“<span class="nocase">Ceramic Morphological Organisation in the Southern Caddo Area: The Clarence H. Webb Collections</span>.”</span> Journal Article. <em>Journal of Cultural Heritage</em> 35: 41–55. <a href="https://doi.org/10.1016/j.culher.2018.07.002">https://doi.org/10.1016/j.culher.2018.07.002</a>.
+</div>
+<div id="ref-RN20852" class="csl-entry">
+———. 2019b. <span>“<span class="nocase">Louisiana Limitrophe: An Iterative Morphological Exegesis of Caddo Bottle and Biface Production</span>.”</span> <em>SocArXiv</em>. <a href="https://doi.org/10.31235/osf.io/rpnd5">https://doi.org/10.31235/osf.io/rpnd5</a>.
+</div>
+<div id="ref-RN8031" class="csl-entry">
+———. 2021a. <span>“<span class="nocase">An Exploratory Network Analysis of the Historic Caddo Period in Northeast Texas</span>.”</span> Book Section. In <em>Ancestral Caddo Ceramic Traditions</em>, edited by Duncan P. McKinnon, Timothy K. Perttula, and Jeffrey S. Girard. Baton Rouge, in press: LSU Press.
+</div>
+<div id="ref-RN8312" class="csl-entry">
+———. 2021b. <span>“<span class="nocase">Louisiana Limitrophe: An Iterative Morphological Exegesis of Caddo Bottle and Biface Production</span>.”</span> Book Section. In <em>Ancestral Caddo Ceramic Traditions</em>, edited by Duncan P. McKinnon, Jeffrey S. Girard, and Timothy K. Perttula. Baton Rouge, in press: LSU Press.
+</div>
+<div id="ref-RN8322" class="csl-entry">
+Selden Jr., Robert Z., John E. Dockall, and Morgane Dubied. 2020. <span>“<span class="nocase">A quantitative assessment of intraspecific morphological variation in Gahagan bifaces from the southern Caddo area and central Texas</span>.”</span> Journal Article. <em>Southeastern Archaeology</em> 39 (2): 125–45. <a href="https://doi.org/10.1080/0734578x.2020.1744416">https://doi.org/10.1080/0734578x.2020.1744416</a>.
+</div>
+<div id="ref-RN11783" class="csl-entry">
+Selden Jr., Robert Z., John E. Dockall, and Harry J. Shafer. 2018. <span>“<span class="nocase">Lithic Morphological Organisation: Gahagan Bifaces from the Southern Caddo Area</span>.”</span> <em>Digital Applications in Archaeology and Cultural Heritage</em> 10: e00080. <a href="https://doi.org/10.1016/j.daach.2018.e00080">https://doi.org/10.1016/j.daach.2018.e00080</a>.
+</div>
+<div id="ref-RN7795" class="csl-entry">
+Suhm, Dee Ann, and Edward B. Jelks. 1962. <em>Handbook of Texas Archeology: Type Descriptions</em>. Book. Austin: Special Publication No. 1. Texas Archeological Society; Bulletin No. 4, Texas Memorial Museum.
+</div>
+<div id="ref-RN5769" class="csl-entry">
+Suhm, Dee Ann, Alex D. Krieger, and Edward B. Jelks. 1954. <span>“An Introductory Handbook of Texas Archeology.”</span> Journal Article. <em>Bulletin of the Texas Archeological Society</em> 25: 1–562.
 </div>
 </div>
             </section>
@@ -339,6 +412,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
