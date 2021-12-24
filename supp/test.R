@@ -111,3 +111,31 @@ TP <- plot(TA,
 add.trajectories(TP, traj.pch = c(15, 19),
                  start.bg = 1, 
                  end.bg = 2)
+
+
+# subset landmark coordinates to produce mean shapes
+new.coords <- coords.subset(A = Y.gpa$coords,
+                            group = qdata$comb)
+names(new.coords)
+
+# group shape means
+mean <- lapply(new.coords, mshape)
+
+## plot mean shape north
+plot(mean$`north, formative early`)
+plot(mean$`north, late historic`)
+plot(mean$`south, formative early`)
+plot(mean$`south, late historic`)
+
+## comparison plot
+plotRefToTarget(mean$`north, formative early`,
+                mean$`south, formative early`,
+                method = "points",
+                mag = 1,
+                useRefPts = TRUE)
+
+plotRefToTarget(mean$`north, late historic`,
+                mean$`south, late historic`,
+                method = "points",
+                mag = 1,
+                useRefPts = TRUE)
