@@ -38,7 +38,7 @@ knitr::include_graphics('./images/traj.jpg')
 
 ### Hypothesis 2 (Diversity)
 
-_**Morphological diversity reflects technological innovation, growth, or maturity.**_
+_**Morphological diversity is reflective of technological innovation, growth, or maturity.**_
 
 ```{r figdiv, fig.cap="Conceptual rendering of how two trajectories may differ, illustrating higher/lower morphological diversity at different intervals. Basin 1 (blue) potentially reflects increased diversity through innovation (few makers), while the Basin 2 (orange) potentially reflects increased diversity through maturity (more makers)."}
 knitr::include_graphics('./images/diversity.png')
@@ -60,7 +60,7 @@ RZS extends his gratitude to the Caddo Nation of Oklahoma, the Caddo Nation Trib
 
 ## Funding
 
-Development of the analytical work flow and production of 3D scans from the Turner and Webb collections was funded by a grant to the author (P14AP00138) from the National Center for Preservation Technology and Training. Production of 3D scan data for Hickory Engraved and Smithport Plain bottles from the Texas Archeological Research Laboratory was funded by a Research Support Fund Grant from the Texas Archeological Society, and collection of 3D scan data for previously repatriated Caddo bottles was funded by a grant from the Caddo Nation of Oklahoma. Funding to collect 3D scan data at the University Museum at the University of Arkansas was provided by the Heritage Research Center at Stephen F. Austin State University.
+Development of the analytical work flow and production of 3D scans from the Turner and Webb collections was funded by a grant to the author (P14AP00138) from the National Center for Preservation Technology and Training. Production of 3D scan data for Caddo bottles from the Texas Archeological Research Laboratory was funded by two Research Support Fund grants to the author from the Texas Archeological Society, and collection of 3D scan data for previously repatriated Caddo bottles was funded by a grant to the author from the Caddo Nation of Oklahoma. Funding to collect 3D scan data at the University Museum at the University of Arkansas was provided by the Heritage Research Center at Stephen F. Austin State University as well as a Data and Analytics grant and Residency to the author from the Spatial Archaeometry Research Collaborations through the University of Arkansas' Center for Advanced Spatial Technology and Dartmouth's Spatial Archaeometry Lab.
 
 ## Data management
 
