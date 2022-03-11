@@ -1,5 +1,5 @@
 --- 
-title: "Patterns of shape change and morphological diversity in Caddo bottles by river basin"
+title: "Patterns of shape change and morphological diversity in Caddo bottles"
 author: "Robert Z. Selden, Jr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -38,7 +38,7 @@ knitr::include_graphics('./images/traj.jpg')
 
 ### Hypothesis 2 (Diversity)
 
-_**Morphological diversity is reflective of technological innovation, growth, or maturity.**_
+_**Morphological diversity is reflective of the technological life cycle (innovation, growth, or maturity).**_
 
 ```{r figdiv, fig.cap="Conceptual rendering of how two trajectories may differ, illustrating higher/lower morphological diversity at different intervals. Basin 1 (blue) potentially reflects increased diversity through innovation (few makers), while the Basin 2 (orange) potentially reflects increased diversity through maturity (more makers)."}
 knitr::include_graphics('./images/diversity.png')
