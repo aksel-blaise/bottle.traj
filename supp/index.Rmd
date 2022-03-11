@@ -1,5 +1,5 @@
 --- 
-title: "Which way toward the maker? Patterns of shape change in Caddo bottles"
+title: "Patterns of shape change and morphological diversity in Caddo bottles by river basin"
 author: "Robert Z. Selden, Jr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -14,34 +14,49 @@ description: "Analysis of shape change in Caddo bottle morphology."
 
 >Reproducibility---the ability to recompute results---and replicability---the chances other experimenters will achieve a consistent result---are two foundational characteristics of successful scientific research [@RN20918].
 
-This volume is written using _Markdown_, and includes all analysis code employed in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in the following chapters. The replicable nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge.
-
 ## Basis of inquiry
 
 In a June 18, 1937 WPA interview with Lillian Cassaway, Sadie Bedoka---a Caddo-Delaware woman who was raised wth the Caddo---states that:
 
 >Each [Caddo] clan had its own shape to make its pottery. One clan never thought of making anything the same pattern of another clan. **_You could tell who made the pottery by the shape_** [@RN9357x, 395].
 
-Diagnostic types---whether `functional`, `decorative`, `morphological`, or `chronological` [@RN20847]---are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based primarily upon decorative motifs, and not morphology [@RN5769;@RN7795]. In recent analyses of Caddo bottle morphology [@RN8074;@RN7927;@RN8370], vessels of the same `decorative` types (Hickory Engraved and Smithport Plain) were found to differ in morphology when recovered from discrete geographical regions. Those studies were subsequently expanded to include a variety of Formative/Early and Late/Historic Caddo bottle types---from the same regions---to assess whether the shape differences identified in the Hickory Engraved and Smithport Plain vessels extend to Caddo bottles _generally_, and whether those shapes differed through time [@RN8312].
+Diagnostic types---whether `functional`, `decorative`, `morphological`, or `chronological` [@RN20847]---are of considerable import in formulating archaeological interpretations; however, the Caddo ceramic types are based primarily upon decorative motifs, and not morphology [@RN5769;@RN7795]. In recent analyses of Caddo bottle morphology [@RN8074;@RN7927;@RN8370], vessels of the same `decorative` types (Hickory Engraved and Smithport Plain) were found to differ in morphology when recovered from discrete geographical regions. Those studies were subsequently expanded to include a variety of Formative/Early and Late/Historic Caddo bottle types---from the same regions---to assess whether morphological differences identified in Hickory Engraved and Smithport Plain bottles extend to Caddo bottles _generally_, and whether those shapes differed through time [@RN8312].
 
-It remains unknown whether the same Caddo potter that crafted the vessel's form also applied the various decorative elements; however, if the same potter is assumed to have applied the motif, then it may be the case that Caddo vessel forms and decorative elements were intended to incorporate discrete cultural signals.
+More recently, morphological differences have been found to occur across the same geography for Gahagan bifaces [@RN11783;@RN8322] and [Perdiz arrow points](https://seldenlab.github.io/perdiz3/), lending further support to the _shape boundary_ hypothesis. This study enlists the largest corpus of Caddo bottles ever to be formally analysed, and assesses whether the trajectory of shape changes in Caddo bottles differs between river basins. Morphological disparity is subsequently used to assess within-basin diversity, eliciting evidence for technological innovation, growth, and maturity associated with Caddo bottle production.
 
-More recently, morphological differences were found to occur across the same geography for Gahagan bifaces [@RN11783;@RN8322] and [Perdiz arrow points](https://aksel-blaise.github.io/perdiz2/), lending further support to the _shape boundary_ hypothesis. While the present study does not yet move beyond an analysis of the larger northern and southern Caddo communities of practice, it expands the previously identified _shape boundary_ [@RN20852] westward into Texas.
+It is not known whether the same Caddo potter that manufactured these vessels also applied the decorative elements. However, if the same potter is assumed to have applied the motif, then it may be the case that Caddo vessel forms and decorative elements were intended to incorporate and communicate discrete cultural signals. Conceptually, these are conceived of as _autogenous_ and _adherent_ signals (sensu Kubler [-@RN8109]), where the _autogenous signal_ is representative of vessel form (inclusive of shape and size), and the _adherent signal_, the motif (and decorative elements therein).
 
-_The goal of this endeavour is to assess shape change through time for Caddo bottles found in the geographies of the northern and southern Caddo communities of practice, as defined in a recent exploratory network analysis [@RN8031]._
+## Hypotheses
 
-```{r fig.map, fig.cap="Archaeological site locations associated with Caddo bottles used in the study."}
-knitr::include_graphics('./images/fig.map.jpg')
+### Hypothesis 1 (Trajectory)
+
+_**Morphological trajectories of Caddo bottles differ by river basin through time.**_
+
+```{r figmap, fig.cap="Sites associated with the Caddo bottles used in the study denoting major river basins by colour."}
+knitr::include_graphics('./images/traj.jpg')
+```
+
+### Hypothesis 2 (Diversity)
+
+_**Morphological diversity reflects technological innovation, growth, or maturity.**_
+
+```{r figdiv, fig.cap="Conceptual rendering of how two trajectories may differ, illustrating higher/lower morphological diversity at different intervals. Basin 1 (blue) potentially reflects increased diversity through innovation (few makers), while the Basin 2 (orange) potentially reflects increased diversity through maturity (more makers)."}
+knitr::include_graphics('./images/diversity.png')
 ```
 
 ## Primary findings
 
-* Caddo bottle shape **differs** significantly by geography and through time
-* Caddo bottle shape trajectories **differ** significantly through time in the northern and southern Caddo communities of practice
+**Hypothesis 1 (Trajectory)**
+
+* 
+
+**Hypothesis 2 (Diversity)**
+
+* 
 
 ## Acknowledgments
 
-I extend my gratitude to the Caddo Nation of Oklahoma, the Material Sciences Laboratory at Southern Methodist University, the University Museum at the University of Arkansas, the Williamson Museum at Northwestern State University, the Louisiana State Exhibit Museum, the Texas Archeological Research Laboratory at The University of Texas at Austin, and the Louisiana State University Museum of Natural Science for the requisite permissions, access, and space needed to generate 3D scans of Caddo bottles. Thanks also to Hiram F. (Pete) Gregory, B. Sunday Eiselt, Kersten Bergstrom, Lauren Butaric, Dean C. Adams, Michael L. Collyer, Emma Sherratt, Michael J. Shott, and David K. Thulman for their constructive criticisms, comments, and suggestions throughout the development of this research programme, as well as the editors and anonymous reviewers whose comments improved the manuscript.
+RZS extends his gratitude to the Caddo Nation of Oklahoma, the Caddo Nation Tribal Council, Tribal Chairman, and Tribal Historic Preservation Office for their guidance related to the development of the 3D scanning protocols, for permission and access to NAGPRA and previously repatriated collections, and for frank discussions related to language surrounding burial contexts associated with Caddo children. I extend my gratitude to the Material Sciences Laboratory at Southern Methodist University, the University Museum at the University of Arkansas, the Williamson Museum at Northwestern State University, the Louisiana State Exhibit Museum, the Texas Archeological Research Laboratory at The University of Texas at Austin, and the Louisiana State University Museum of Natural Science for the requisite permissions, access, and space needed to generate 3D scans of Caddo bottles. Thanks also to Hiram F. (Pete) Gregory, B. Sunday Eiselt, Kersten Bergstrom, Lauren Butaric, Dean C. Adams, Michael L. Collyer, Emma Sherratt, Michael J. Shott, and David K. Thulman for their constructive criticisms, comments, and suggestions throughout the development of this research programme, as well as the editors and anonymous reviewers whose comments improved the manuscript.
 
 ## Funding
 
@@ -49,7 +64,9 @@ Development of the analytical work flow and production of 3D scans from the Turn
 
 ## Data management
 
-The data and analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework ([DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/)).
+The data and analysis code associated with this project can be accessed through this document or the [GitHub](https://github.com/aksel-blaise/bottle.traj) repository, which is digitally curated on the Open Science Framework ([DOI: 10.17605/OSF.IO/GH7VZ](https://osf.io/gh7vz/)). The reproducible nature of this undertaking provides a means for others to critically assess and evaluate the various analytical components [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge.
+
+Reproducibility projects in [psychology](https://osf.io/ezcuj/) and [cancer biology](https://www.cos.io/rpcb) are impacting current research practices across all domains. Examples of reproducible research are becoming more abundant in archaeology [@RN20804;@RN21009;@RN11783;@RN21001;@RN9364], and the next generation of archaeologists are learning those tools and methods needed to reproduce and/or replicate research results [@RN21007]. Reproducible and replicable research work flows are often employed at the highest levels of humanities-based inquiries to mitigate concern or doubt regarding proper execution, and is of particular import should the results have---explicitly or implicitly---a major impact on scientific progress [@RN21008].
 
 ## Colophon
 

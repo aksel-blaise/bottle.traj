@@ -116,13 +116,13 @@ A residual randomisation permutation procedure (RRPP; n = 10,000 permutations) w
 
 ```{r def.mod.1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # size.geo
-fit.size <- procD.lm(size ~ geo * time,
+fit.size <- procD.lm(size ~ geo + time,
                 data = gdf,
                 print.progress = FALSE,
                 iter = 9999)
 
 # shape.geo
-fit.shape <- procD.lm(shape ~ geo * time,
+fit.shape <- procD.lm(shape ~ geo + time,
                 data = gdf,
                 print.progress = FALSE,
                 iter = 9999)
@@ -135,10 +135,10 @@ _Hypothesis: Formative/Early and Late/Historic Caddo bottles found north and sou
 ### Procrustes ANOVA
 
 ```{r h1, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# ANOVA: do Caddo bottle sizes differ by geography through time?
+# ANOVA: do Caddo bottle sizes differ by geography and/or time?
 anova(fit.size)
 
-# ANOVA: do Caddo bottle shapes differ by geography through time?
+# ANOVA: do Caddo bottle shapes differ by geography and/or time?
 anova(fit.shape)
 ```
 

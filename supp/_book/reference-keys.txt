@@ -1,6 +1,11 @@
+fig:figmap
+fig:figdiv
 tab:gpa
 fig:box1
 basis-of-inquiry
+hypotheses
+hypothesis-1-trajectory
+hypothesis-2-diversity
 primary-findings
 acknowledgments
 funding
