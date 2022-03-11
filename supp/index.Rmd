@@ -41,7 +41,7 @@ knitr::include_graphics('./images/traj.jpg')
 _**Morphological diversity is reflective of the technological life cycle (innovation, growth, or maturity).**_
 
 ```{r figdiv, fig.cap="Conceptual rendering of how two trajectories may differ, illustrating higher/lower morphological diversity at different intervals. Basin 1 (blue) potentially reflects increased diversity through innovation (few makers), while the Basin 2 (orange) potentially reflects increased diversity through maturity (more makers)."}
-knitr::include_graphics('./images/diversity.png')
+knitr::include_graphics('./images/diversity.jpg')
 ```
 
 ## Primary findings
